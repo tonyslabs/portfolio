@@ -1,0 +1,78 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description?: string;
+  path?: string; // e.g. "/web-development"
+  ogImage?: string;
+}
+
+const { title, description, path, ogImage } = Astro.props as Props;
+
+const site = Astro.site ? String(Astro.site) : undefined;
+const canonical = site && path ? new URL(path, site).toString() : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description ?? "Portfolio of Tony Lacayo: web systems, APIs, and infrastructure."} />
+    <meta name="viewport" content="width=device-width" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Styles & Fonts -->
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/" rel="preconnect" />
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin="anonymous" />
+    <ViewTransitions />
+  </head>
+  <body>
+    <slot />
+    <script>
+      import { setupLightbox } from '../scripts/lightbox.js';
+      let cleanup;
+      document.addEventListener('astro:page-load', () => {
+        if (cleanup) cleanup();
+        cleanup = setupLightbox();
+      });
+      document.addEventListener('astro:before-swap', () => {
+        if (cleanup) cleanup();
+      });
+    </script>
+  </body>
+  
+</html>
+<style is:global>
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background: #13151a;
+    background-size: 224px;
+  }
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+</style>

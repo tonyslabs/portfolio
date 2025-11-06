@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Project from "../components/Project.astro";
+import Sidebar from "../components/Sidebar.astro";
+import { projects } from "../data/infra";
+---
+
+<Layout
+  title="Infrastructure & Automation | Tony Lacayo"
+  description="DevOps, CI/CD, Docker, and server automation tooling."
+  path="/infrastructure"
+>
+  <div class="content">
+    <Sidebar selectedItem="infrastructure" />
+    <main class="main">
+      <div class="container">
+        <div class="back-nav-container">
+          <a href="/" class="back-nav-button w-inline-block">
+            <img
+              src="/assets/back.svg"
+              loading="lazy"
+              alt="Back icon"
+              class="back-nav-img"
+            />
+            <div>Back</div>
+          </a>
+        </div>
+
+        <div class="content-container">
+          <h1>Infrastructure &amp; Automation</h1>
+          <section class="items-container">
+            <div class="resouce-items">
+              {
+                projects.map((project) => (
+                  <Project
+                    title={project.title}
+                    desc={project.desc}
+                    tech={project.tech}
+                  />
+                ))
+              }
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>

@@ -1,0 +1,148 @@
+---
+const { selectedItem } = Astro.props;
+---
+
+<aside
+  data-animation="default"
+  data-collapse="medium"
+  data-duration="400"
+  data-easing="ease"
+  data-easing2="ease"
+  class="sidebar w-nav"
+>
+  <div class="nav-content">
+    <a href="/" class="w-nav-brand" aria-label="home">
+      <div class="niv-data">
+        <img
+          src="/assets/image.png"
+          loading="eager"
+          alt="Profile picture"
+          class="niv-image"
+        />
+        <div>
+          <div class="label-white">Tony Lacayo</div>
+          <div class="label-gray">Web & API Developer</div>
+        </div>
+      </div>
+    </a>
+
+    <nav role="navigation" class="w-nav-menu" id="nav-menu">
+      <a
+        href="/"
+        class={`nav-link-container w-inline-block ${
+          selectedItem === 'home' ? 'w--current' : ''
+        }`}
+        aria-current={selectedItem === 'home' ? 'page' : undefined}
+      >
+        <img
+          src="/assets/home.svg"
+          loading="eager"
+          alt="Home icon"
+          class="nav-link-image"
+        />
+        <div>Home</div>
+      </a>
+
+      <a
+        href="/web-development"
+        class={`nav-link-container w-inline-block ${
+          selectedItem === 'web-development' ? 'w--current' : ''
+        }`}
+        aria-current={selectedItem === 'web-development' ? 'page' : undefined}
+      >
+        <img
+          src="/assets/browser.svg"
+          loading="eager"
+          alt="Web Development icon"
+          class="nav-link-image"
+        />
+        <div>Web Development</div>
+      </a>
+
+      <a
+        href="/api-integrations"
+        class={`nav-link-container w-inline-block ${
+          selectedItem === 'api-integrations' ? 'w--current' : ''
+        }`}
+        aria-current={selectedItem === 'api-integrations' ? 'page' : undefined}
+      >
+        <img
+          src="/assets/coding.svg"
+          loading="eager"
+          alt="API icon"
+          class="nav-link-image"
+        />
+        <div>API Integrations</div>
+      </a>
+
+      <a
+        href="/infrastructure"
+        class={`nav-link-container w-inline-block ${
+          selectedItem === 'infrastructure' ? 'w--current' : ''
+        }`}
+        aria-current={selectedItem === 'infrastructure' ? 'page' : undefined}
+      >
+        <img
+          src="/assets/database.svg"
+          loading="eager"
+          alt="Infrastructure icon"
+          class="nav-link-image"
+        />
+        <div>Infrastructure</div>
+      </a>
+
+      <a
+        href="/personal-projects"
+        class={`nav-link-container w-inline-block ${
+          selectedItem === 'personal-projects' ? 'w--current' : ''
+        }`}
+        aria-current={selectedItem === 'personal-projects' ? 'page' : undefined}
+      >
+        <img
+          src="/assets/favorite.svg"
+          loading="eager"
+          alt="Personal projects icon"
+          class="nav-link-image"
+        />
+        <div>Proyectos Personales</div>
+      </a>
+    </nav>
+
+    <button
+      class="navbar-icon-button w-nav-button"
+      style="-webkit-user-select: text;"
+      aria-label="Menu"
+      aria-controls="nav-menu"
+      aria-expanded="false"
+      type="button"
+    >
+      <img
+        src="/assets/menu.svg"
+        loading="eager"
+        alt="Menu icon"
+        class="navbar-icon"
+      />
+    </button>
+
+    <button class="sidebar-toggle" type="button" aria-pressed="false" aria-label="Collapse sidebar">
+      <span class="toggle-icon">⟨⟩</span>
+      <span class="toggle-text">Collapse</span>
+    </button>
+  </div>
+
+  <script>
+    import { setupNav } from '../scripts/nav.js';
+    import { setupSidebarCollapse } from '../scripts/nav.js';
+    let cleanup;
+    document.addEventListener('astro:page-load', () => {
+      if (cleanup) cleanup();
+      const cleanA = setupNav();
+      const cleanB = setupSidebarCollapse();
+      cleanup = () => { cleanA && cleanA(); cleanB && cleanB(); };
+    });
+
+    document.addEventListener('astro:before-swap', () => {
+      if (cleanup) cleanup();
+    });
+  </script>
+</aside>

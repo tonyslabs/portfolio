@@ -1,0 +1,126 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../components/Sidebar.astro";
+---
+
+<Layout
+  title="Tony Lacayo | Web Systems, APIs, Infrastructure"
+  description="Full Stack developer focused on backend architecture, API design, and system integration."
+  path="/"
+>
+  <div class="content">
+    <Sidebar selectedItem="home" />
+    <main class="main">
+        <div class="container">
+          <main class="fold-content-container">
+            <div class="fold-content">
+              <h1>Hi, I'm Tony.<br />I build and connect web systems.</h1>
+              <p class="lead">
+                Full Stack developer focused on backend architecture, API
+                design, and system integration. Specialized in Laravel, FastAPI,
+                and REST/JSON-based communication between platforms. Passionate
+                about automation, scalability, and clean code.
+              </p>
+            </div>
+            <a href="mailto:tony@strivexlabs.com" class="button w-button"
+              >Contact</a
+            >
+          </main>
+
+          <div class="projects-section">
+            <!-- Web Development -->
+            <a href="/web-development" class="projects-container">
+              <div class="single-projects-category">
+                <div class="projects-category-image-container">
+                  <img
+                    src="./assets/browser.svg"
+                    loading="lazy"
+                    alt="Web development icon"
+                    class="projects-category-image"
+                  />
+                </div>
+              </div>
+              <div class="single-projects-content">
+                <h4>Web Development</h4>
+                <div class="tech-tools-container">
+                  <div class="mini-label-white gray-color">
+                    Technologies &amp; tools
+                  </div>
+                  <div class="chips-container chips-container-small-width">
+                    <div class="single-chip small-chip">Laravel</div>
+                    <div class="single-chip small-chip">FastAPI</div>
+                    <div class="single-chip small-chip">MySQL</div>
+                    <div class="single-chip small-chip">PHP</div>
+                    <div class="single-chip small-chip">Python</div>
+                    <div class="single-chip small-chip">Alpine.js</div>
+                    <div class="single-chip small-chip">TailwindCSS</div>
+                    <div class="single-chip small-chip">JavaScript</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- API Development & Integrations -->
+            <a href="/api-integrations" class="projects-container">
+              <div class="single-projects-category">
+                <div class="projects-category-image-container devops-img">
+                  <img
+                    src="./assets/coding.svg"
+                    loading="lazy"
+                    alt="API icon"
+                    class="projects-category-image"
+                  />
+                </div>
+              </div>
+              <div class="single-projects-content">
+                <h4>API Development &amp; Integrations</h4>
+                <div class="tech-tools-container">
+                  <div class="mini-label-white gray-color">
+                    Technologies &amp; tools
+                  </div>
+                  <div class="chips-container chips-container-small-width">
+                    <div class="single-chip small-chip">REST</div>
+                    <div class="single-chip small-chip">SOAP</div>
+                    <div class="single-chip small-chip">Postman</div>
+                    <div class="single-chip small-chip">WooCommerce API</div>
+                    <div class="single-chip small-chip">Shopify API</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- DevOps & Infrastructure -->
+            <a href="/infrastructure" class="projects-container">
+              <div class="single-projects-category">
+                <div class="projects-category-image-container devops-img">
+                  <img
+                    src="./assets/database.svg"
+                    loading="lazy"
+                    alt="Server icon"
+                    class="projects-category-image"
+                  />
+                </div>
+              </div>
+              <div class="single-projects-content">
+                <h4>Infrastructure &amp; Automation</h4>
+                <div class="tech-tools-container">
+                  <div class="mini-label-white gray-color">
+                    Technologies &amp; tools
+                  </div>
+                  <div class="chips-container chips-container-small-width">
+                    <div class="single-chip small-chip">Linux</div>
+                    <div class="single-chip small-chip">Docker</div>
+                    <div class="single-chip small-chip">Nginx</div>
+                    <div class="single-chip small-chip">Bash</div>
+                    <div class="single-chip small-chip">GitHub Actions</div>
+                    <div class="single-chip small-chip">SFTP Deploy</div>
+                    <div class="single-chip small-chip">Cron</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+    </main>
+  </div>
+</Layout>

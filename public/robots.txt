@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Update the URL below when sitemap generation is configured
+Sitemap: https://example.com/sitemap-index.xml
+

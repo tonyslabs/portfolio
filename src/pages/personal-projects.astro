@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Project from "../components/Project.astro";
+import Sidebar from "../components/Sidebar.astro";
+import { projects } from "../data/personal";
+---
+
+<Layout
+  title="Proyectos Personales | Tony Lacayo"
+  description="Selected side projects and open source contributions."
+  path="/personal-projects"
+>
+  <div class="content">
+    <Sidebar selectedItem="personal-projects" />
+    <main class="main">
+      <div class="container">
+        <div class="back-nav-container">
+          <a href="/" class="back-nav-button w-inline-block">
+            <img
+              src="/assets/back.svg"
+              loading="lazy"
+              alt="Back icon"
+              class="back-nav-img"
+            />
+            <div>Back</div>
+          </a>
+        </div>
+        <div class="content-container">
+          <h1>Proyectos Personales</h1>
+          <section class="items-container">
+            <div class="resouce-items">
+              {
+                projects.map((project) => (
+                  <Project
+                    title={project.title}
+                    desc={project.desc}
+                    tech={project.tech}
+                    images={project.images}
+                    repo={project.repo}
+                  />
+                ))
+              }
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>

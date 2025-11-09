@@ -3,33 +3,37 @@ import Layout from "../layouts/Layout.astro";
 import Project from "../components/Project.astro";
 import Sidebar from "../components/Sidebar.astro";
 import { projects } from "../data/web";
----
 
-<Layout
-  title="Web Development | Tony Lacayo"
-  description="Selected web apps and systems: Laravel, FastAPI, Tailwind."
-  path="/web-development"
->
-  <div class="content">
+const meta = {
+  title: "Web Development | Anthony Lacayo",
+  description: "Selected web apps and systems: Laravel, FastAPI, Tailwind.",
+  image: "/og-image.jpg",
+  url: "https://anthonylacayo.com/web-development",
+};
+---
+<Layout {...meta} path="/web-development">
+  <!-- FONDO DIFUMINADO CON GRID SVG -->
+  <div class="grid-background">
+    <img src="/assets/grid-top-right.svg" alt="" class="grid-svg" />
+  </div>
+
+  <div class="page-wrapper">
     <Sidebar selectedItem="web-development" />
-    <main class="main">
+    <main class="main-content">
       <div class="container">
-        <div class="back-nav-container">
-          <a href="/" class="back-nav-button w-inline-block">
-            <img
-              src="/assets/back.svg"
-              loading="lazy"
-              alt="Back icon"
-              class="back-nav-img"
-            />
-            <div>Back</div>
+        <!-- Back Navigation -->
+        <div class="back-nav-container" data-animate>
+          <a href="/" class="back-nav-button">
+            <img src="/assets/back.svg" loading="lazy" alt="Back" class="back-nav-img" />
+            <span>Back</span>
           </a>
         </div>
 
-        <div class="content-container">
+        <!-- Content -->
+        <div class="content-container" data-animate>
           <h1>Web Development</h1>
           <section class="items-container">
-            <div class="resouce-items">
+            <div class="resource-items">
               {
                 projects.map((project, i) => (
                   <Project
@@ -48,3 +52,167 @@ import { projects } from "../data/web";
     </main>
   </div>
 </Layout>
+
+<style>
+  :root {
+    --bg: linear-gradient(180deg, rgba(20, 20, 28, 0.98) 0%, rgba(10, 10, 18, 0.98) 100%);
+    --accent: #6e56cf;
+    --accent-hover: #8b70ff;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --radius: 18px;
+    --sidebar-width: 260px;
+    --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ===== GRID SVG DIFUMINADO AL FONDO ===== */
+  .grid-background {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .grid-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1800px;
+    height: auto;
+    max-width: none;
+    opacity: 0.14;
+    filter: blur(70px) brightness(1.4);
+    user-select: none;
+  }
+
+  /* ===== Layout ===== */
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 100vh;
+    background: var(--bg);
+    background-attachment: fixed;
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 3rem 2rem;
+    overflow-x: hidden;
+    padding-left: calc(var(--sidebar-width) + 2rem);
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 900px) {
+    .main-content { padding-left: 1rem; }
+  }
+  .container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+
+  /* ===== Back Button ===== */
+  .back-nav-container {
+    margin-bottom: 2rem;
+  }
+  .back-nav-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+    padding: 0.4rem 0;
+  }
+  .back-nav-button:hover {
+    color: white;
+    transform: translateX(-4px);
+  }
+  .back-nav-img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+    transition: var(--transition);
+  }
+  .back-nav-button:hover .back-nav-img {
+    opacity: 1;
+    transform: translateX(-2px);
+  }
+
+  /* ===== Content ===== */
+  .content-container h1 {
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 2.5rem;
+    background: linear-gradient(135deg, #fff, #d0d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+  }
+
+  .items-container {
+    margin-top: 1rem;
+  }
+
+  .resource-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* ===== Animations ===== */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  [data-animate].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .main-content {
+      padding: 2rem 1rem;
+    }
+    .back-nav-container {
+      margin-bottom: 1.5rem;
+    }
+    .content-container h1 {
+      margin-bottom: 2rem;
+    }
+    .resource-items {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .grid-svg {
+      width: 1200px;
+      filter: blur(50px);
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .resource-items {
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+</script>

@@ -1,126 +1,339 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Sidebar from "../components/Sidebar.astro";
+const meta = {
+  title: "Anthony Lacayo | Web Systems, APIs, Infrastructure",
+  description:
+    "Full Stack developer focused on backend architecture, API design, and system integration.",
+  image: "/og-image.jpg",
+  url: "https://anthonylacayo.com",
+};
 ---
-
-<Layout
-  title="Tony Lacayo | Web Systems, APIs, Infrastructure"
-  description="Full Stack developer focused on backend architecture, API design, and system integration."
-  path="/"
->
-  <div class="content">
+<Layout {...meta} path="/">
+  <!-- FONDO DIFUMINADO CON GRID SVG -->
+  <div class="grid-background">
+    <img src="/assets/grid-top-right.svg" alt="" class="grid-svg" />
+  </div>
+  <div class="page-wrapper">
     <Sidebar selectedItem="home" />
-    <main class="main">
-        <div class="container">
-          <main class="fold-content-container">
-            <div class="fold-content">
-              <h1>Hi, I'm Tony.<br />I build and connect web systems.</h1>
-              <p class="lead">
-                Full Stack developer focused on backend architecture, API
-                design, and system integration. Specialized in Laravel, FastAPI,
-                and REST/JSON-based communication between platforms. Passionate
-                about automation, scalability, and clean code.
-              </p>
-            </div>
-            <a href="mailto:tony@strivexlabs.com" class="button w-button"
-              >Contact</a
-            >
-          </main>
-
-          <div class="projects-section">
+    <main class="main-content">
+      <div class="container">
+        <!-- Hero Section -->
+        <section class="hero" data-animate>
+          <div class="hero-content">
+            <h1>Hi, I'm Anthony.<br />I build and connect web systems.</h1>
+            <p class="lead">
+              Full Stack developer focused on backend architecture, API design,
+              and system integration. Specialized in Laravel, FastAPI, and
+              REST/JSON-based communication between platforms. Passionate about
+              automation, scalability, and clean code.
+            </p>
+            <a href="mailto:Anthony@strivexlabs.com" class="contact-btn">
+              Contact <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </section>
+        <!-- Projects Scroll -->
+        <section class="projects-section" data-animate>
+          <div class="section-header">
+            <h2>My Expertise</h2>
+          </div>
+          <div class="projects-track" id="projects-track">
             <!-- Web Development -->
-            <a href="/web-development" class="projects-container">
-              <div class="single-projects-category">
-                <div class="projects-category-image-container">
-                  <img
-                    src="./assets/browser.svg"
-                    loading="lazy"
-                    alt="Web development icon"
-                    class="projects-category-image"
-                  />
-                </div>
-              </div>
-              <div class="single-projects-content">
-                <h4>Web Development</h4>
-                <div class="tech-tools-container">
-                  <div class="mini-label-white gray-color">
-                    Technologies &amp; tools
-                  </div>
-                  <div class="chips-container chips-container-small-width">
-                    <div class="single-chip small-chip">Laravel</div>
-                    <div class="single-chip small-chip">FastAPI</div>
-                    <div class="single-chip small-chip">MySQL</div>
-                    <div class="single-chip small-chip">PHP</div>
-                    <div class="single-chip small-chip">Python</div>
-                    <div class="single-chip small-chip">Alpine.js</div>
-                    <div class="single-chip small-chip">TailwindCSS</div>
-                    <div class="single-chip small-chip">JavaScript</div>
-                  </div>
+            <a href="/web-development" class="project-card" aria-label="Web Development projects">
+              <div class="icon"><img src="/assets/browser.svg" alt="" /></div>
+              <div class="content">
+                <h3>Web Development</h3>
+                <div class="chips">
+                  <span class="chip">Laravel</span>
+                  <span class="chip">FastAPI</span>
+                  <span class="chip">MySQL</span>
+                  <span class="chip">PHP</span>
+                  <span class="chip">Alpine.js</span>
+                  <span class="chip">TailwindCSS</span>
+                  <span class="chip">Astro</span>
                 </div>
               </div>
             </a>
-
-            <!-- API Development & Integrations -->
-            <a href="/api-integrations" class="projects-container">
-              <div class="single-projects-category">
-                <div class="projects-category-image-container devops-img">
-                  <img
-                    src="./assets/coding.svg"
-                    loading="lazy"
-                    alt="API icon"
-                    class="projects-category-image"
-                  />
-                </div>
-              </div>
-              <div class="single-projects-content">
-                <h4>API Development &amp; Integrations</h4>
-                <div class="tech-tools-container">
-                  <div class="mini-label-white gray-color">
-                    Technologies &amp; tools
-                  </div>
-                  <div class="chips-container chips-container-small-width">
-                    <div class="single-chip small-chip">REST</div>
-                    <div class="single-chip small-chip">SOAP</div>
-                    <div class="single-chip small-chip">Postman</div>
-                    <div class="single-chip small-chip">WooCommerce API</div>
-                    <div class="single-chip small-chip">Shopify API</div>
-                  </div>
+            <!-- API Integrations -->
+            <a href="/api-integrations" class="project-card" aria-label="API Development & Integrations">
+              <div class="icon"><img src="/assets/coding.svg" alt="" /></div>
+              <div class="content">
+                <h3>API Development & Integrations</h3>
+                <div class="chips">
+                  <span class="chip">REST</span>
+                  <span class="chip">SOAP</span>
+                  <span class="chip">Postman</span>
+                  <span class="chip">WooCommerce API</span>
+                  <span class="chip">Shopify API</span>
+                  <span class="chip">MercadoLibre</span>
                 </div>
               </div>
             </a>
-
-            <!-- DevOps & Infrastructure -->
-            <a href="/infrastructure" class="projects-container">
-              <div class="single-projects-category">
-                <div class="projects-category-image-container devops-img">
-                  <img
-                    src="./assets/database.svg"
-                    loading="lazy"
-                    alt="Server icon"
-                    class="projects-category-image"
-                  />
-                </div>
-              </div>
-              <div class="single-projects-content">
-                <h4>Infrastructure &amp; Automation</h4>
-                <div class="tech-tools-container">
-                  <div class="mini-label-white gray-color">
-                    Technologies &amp; tools
-                  </div>
-                  <div class="chips-container chips-container-small-width">
-                    <div class="single-chip small-chip">Linux</div>
-                    <div class="single-chip small-chip">Docker</div>
-                    <div class="single-chip small-chip">Nginx</div>
-                    <div class="single-chip small-chip">Bash</div>
-                    <div class="single-chip small-chip">GitHub Actions</div>
-                    <div class="single-chip small-chip">SFTP Deploy</div>
-                    <div class="single-chip small-chip">Cron</div>
-                  </div>
+            <!-- Infrastructure -->
+            <a href="/infrastructure" class="project-card" aria-label="Infrastructure & Automation">
+              <div class="icon"><img src="/assets/database.svg" alt="" /></div>
+              <div class="content">
+                <h3>Infrastructure & Automation</h3>
+                <div class="chips">
+                  <span class="chip">Linux</span>
+                  <span class="chip">Docker</span>
+                  <span class="chip">Nginx</span>
+                  <span class="chip">Bash</span>
+                  <span class="chip">GitHub Actions</span>
+                  <span class="chip">Cron</span>
+                  <span class="chip">CI/CD</span>
                 </div>
               </div>
             </a>
           </div>
-        </div>
+        </section>
+      </div>
     </main>
   </div>
 </Layout>
+<style>
+  :root {
+    --bg: linear-gradient(180deg, rgba(20, 20, 28, 0.98) 0%, rgba(10, 10, 18, 0.98) 100%);
+    --accent: #6e56cf;
+    --accent-hover: #8b70ff;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --radius: 18px;
+    --sidebar-width: 260px;
+    --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  /* ===== GRID SVG DIFUMINADO AL FONDO ===== */
+  .grid-background {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .grid-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1800px;
+    height: auto;
+    max-width: none;
+    opacity: 0.14;
+    filter: blur(70px) brightness(1.4);
+    user-select: none;
+  }
+  /* ===== Layout ===== */
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 100vh;
+    background: var(--bg);
+    background-attachment: fixed;
+    color: var(--text);
+    overflow: hidden;
+  }
+  .main-content {
+    flex: 1;
+    padding: 2rem 1.5rem;
+    overflow-x: hidden;
+    padding-left: calc(var(--sidebar-width) + 1.5rem);
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 900px) {
+    .main-content { padding-left: 1rem; padding-top: 1.5rem; }
+  }
+  .container { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; }
+  /* ===== Hero ===== */
+  .hero {
+    max-width: 780px;
+    margin-bottom: 1.2rem; /* Reducido para acercar botón a "My Expertise" */
+  }
+  .hero-content h1 {
+    font-size: clamp(2.3rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 1rem;
+    background: linear-gradient(135deg, #fff, #d0d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+  }
+  .lead {
+    font-size: 1.08rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 680px;
+    margin-bottom: 1.5rem; /* Reducido para compactar */
+  }
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: var(--accent);
+    color: white;
+    padding: .85rem 1.9rem;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: .96rem;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 6px 20px rgba(110,86,207,.3);
+  }
+  .contact-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(110,86,207,.4);
+  }
+  .btn-arrow { transition: transform .3s ease; }
+  .contact-btn:hover .btn-arrow { transform: translateX(4px); }
+  /* ===== Sections ===== */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem; /* Reducido */
+  }
+  .section-header h2 { font-size: 1.45rem; font-weight: 600; color: white; }
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  [data-animate].visible { opacity: 1; transform: translateY(0); }
+  /* ===== Projects ===== */
+  .projects-section { 
+    margin-top: 0.5rem; /* Muy cerca del botón */
+    position: relative; 
+    z-index: 2; 
+  }
+  .projects-track {
+    display: flex;
+    gap: 1.2rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 1.5rem;
+    scrollbar-width: none;
+    /* Centrado perfecto */
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  .projects-track::before,
+  .projects-track::after {
+    content: '';
+    flex: 0 0 1rem;
+  }
+  .projects-track::-webkit-scrollbar { display: none; }
+
+  .project-card {
+    flex: 0 0 310px;
+    width: 310px;
+    height: 250px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+  .project-card:hover {
+    background: rgba(255,255,255,.08);
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.25);
+  }
+  .icon {
+    width: 60px; height: 60px;
+    background: rgba(110,86,207,.18);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .9rem;
+    flex-shrink: 0;
+  }
+  .icon img { width: 30px; height: 30px; filter: brightness(0) invert(1); opacity: .9; }
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .content h3 {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: .7rem;
+    line-height: 1.3;
+    white-space: normal;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .4rem;
+    row-gap: .4rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 .2rem;
+  }
+  .chip {
+    background: rgba(255,255,255,.09);
+    color: var(--text);
+    font-size: .74rem;
+    padding: .32rem .68rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,.14);
+    white-space: nowrap;
+    flex: 0 0 auto;
+    transition: var(--transition);
+  }
+  .project-card:hover .chip {
+    background: rgba(110,86,207,.25);
+    border-color: var(--accent);
+    color: white;
+  }
+  /* RESPONSIVE */
+  @media (min-width: 1400px) {
+    .project-card { width: 330px; height: 270px; }
+  }
+  @media (max-width: 768px) {
+    .project-card { width: 260px; height: 230px; padding: 1.1rem; }
+    .icon { width: 54px; height: 54px; margin-bottom: .8rem; }
+    .icon img { width: 26px; height: 26px; }
+    .content h3 { font-size: 1.02rem; margin-bottom: .6rem; }
+    .chip { font-size: .72rem; padding: .3rem .6rem; }
+    .grid-svg { width: 1200px; filter: blur(50px); }
+    .hero { margin-bottom: 1rem; }
+    .projects-section { margin-top: 0.3rem; }
+    .section-header { margin-bottom: 1rem; }
+    .lead { margin-bottom: 1.2rem; }
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+</script>

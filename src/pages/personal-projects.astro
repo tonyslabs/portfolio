@@ -3,34 +3,39 @@ import Layout from "../layouts/Layout.astro";
 import Project from "../components/Project.astro";
 import Sidebar from "../components/Sidebar.astro";
 import { projects } from "../data/personal";
----
 
-<Layout
-  title="Proyectos Personales | Tony Lacayo"
-  description="Selected side projects and open source contributions."
-  path="/personal-projects"
->
-  <div class="content">
+const meta = {
+  title: "Proyectos Personales | Anthony Lacayo",
+  description: "Selected side projects and open source contributions.",
+  image: "/og-image.jpg",
+  url: "https://anthonylacayo.com/personal-projects",
+};
+---
+<Layout {...meta} path="/personal-projects">
+  <!-- FONDO DIFUMINADO CON GRID SVG -->
+  <div class="grid-background">
+    <img src="/assets/grid-top-right.svg" alt="" class="grid-svg" />
+  </div>
+
+  <div class="page-wrapper">
     <Sidebar selectedItem="personal-projects" />
-    <main class="main">
+    <main class="main-content">
       <div class="container">
-        <div class="back-nav-container">
-          <a href="/" class="back-nav-button w-inline-block">
-            <img
-              src="/assets/back.svg"
-              loading="lazy"
-              alt="Back icon"
-              class="back-nav-img"
-            />
-            <div>Back</div>
+        <!-- Back Navigation -->
+        <div class="back-nav-container" data-animate>
+          <a href="/" class="back-nav-button">
+            <img src="/assets/back.svg" loading="lazy" alt="Back" class="back-nav-img" />
+            <span>Back</span>
           </a>
         </div>
-        <div class="content-container">
+
+        <!-- Content -->
+        <div class="content-container" data-animate>
           <h1>Proyectos Personales</h1>
           <section class="items-container">
-            <div class="resouce-items">
+            <div class="resource-items">
               {
-                projects.map((project) => (
+                projects.map((project, i) => (
                   <Project
                     title={project.title}
                     desc={project.desc}
@@ -38,6 +43,7 @@ import { projects } from "../data/personal";
                     images={project.images}
                     repo={project.repo}
                     site={project.site}
+                    lightboxId={`gallery-${i}`}
                   />
                 ))
               }
@@ -47,53 +53,384 @@ import { projects } from "../data/personal";
       </div>
     </main>
   </div>
-  <!-- Overlay global -->
-<div id="overlay" class="overlay">
-  <div class="overlay-content">
-    <img id="overlay-img" src="" alt="expanded" />
+
+  <!-- Overlay global para imágenes -->
+  <div id="overlay" class="overlay">
+    <div class="overlay-content">
+      <img id="overlay-img" src="" alt="expanded" />
+    </div>
   </div>
-</div>
+</Layout>
 
 <style>
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  border-radius: 18px;
-  overflow: hidden;
-}
-.overlay.active {
-  display: flex;
-}
-.overlay-content {
-  max-width: 70vw;     /* antes 90vw */
-  max-height: 70vh;    /* antes 85vh */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
-}
-.overlay img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: inherit;
-  animation: zoomIn 0.25s ease;
-  cursor: zoom-out;
-}
+  :root {
+    --bg: linear-gradient(180deg, rgba(20, 20, 28, 0.98) 0%, rgba(10, 10, 18, 0.98) 100%);
+    --accent: #6e56cf;
+    --accent-hover: #8b70ff;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --radius: 18px;
+    --sidebar-width: 260px;
+    --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --project-max-width: 720px;
+    --project-min-height: 460px; /* Altura mínima igual para todas */
+    --images-area-height: 160px; /* Área de imágenes fija */
+  }
 
-@keyframes zoomIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
+  /* ===== GRID SVG DIFUMINADO AL FONDO ===== */
+  .grid-background {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .grid-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1800px;
+    height: auto;
+    max-width: none;
+    opacity: 0.14;
+    filter: blur(70px) brightness(1.4);
+    user-select: none;
+  }
+
+  /* ===== Layout ===== */
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 100vh;
+    background: var(--bg);
+    background-attachment: fixed;
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 3rem 2rem;
+    overflow-x: hidden;
+    padding-left: calc(var(--sidebar-width) + 2rem);
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 900px) {
+    .main-content { padding-left: 1rem; }
+  }
+  .container { 
+    max-width: 900px;
+    margin: 0 auto; 
+    position: relative; 
+    z-index: 2; 
+  }
+
+  /* ===== Back Button ===== */
+  .back-nav-container {
+    margin-bottom: 2rem;
+  }
+  .back-nav-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+    padding: 0.4rem 0;
+  }
+  .back-nav-button:hover {
+    color: white;
+    transform: translateX(-4px);
+  }
+  .back-nav-img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+    transition: var(--transition);
+  }
+  .back-nav-button:hover .back-nav-img {
+    opacity: 1;
+    transform: translateX(-2px);
+  }
+
+  /* ===== Content ===== */
+  .content-container h1 {
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 2.5rem;
+    background: linear-gradient(135deg, #fff, #d0d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+  }
+
+  .items-container {
+    margin-top: 1rem;
+  }
+
+  /* === COLUMNA ÚNICA + ALTURA CONSISTENTE === */
+  .resource-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* === TARJETA BASE (estilizada como en tu captura) === */
+  .project-card {
+    width: 100%;
+    max-width: var(--project-max-width);
+    min-height: var(--project-min-height);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    transition: var(--transition);
+    align-self: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .project-card:hover {
+    background: rgba(255,255,255,.08);
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0,0,0,.25);
+  }
+
+  /* === Título === */
+  .project-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: white;
+    margin: 0 0 0.8rem;
+    line-height: 1.3;
+  }
+
+  /* === Descripción (lista) === */
+  .project-desc {
+    font-size: 0.94rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+
+  .project-desc ul {
+    margin: 0;
+    padding-left: 1.3rem;
+  }
+
+  .project-desc li {
+    margin-bottom: 0.35rem;
+  }
+
+  /* === Área de imágenes === */
+  .project-images {
+    height: var(--images-area-height);
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.6rem;
+    overflow: hidden;
+    border-radius: 12px;
+    padding: 0.2rem;
+  }
+
+  .project-images img {
+    width: 100%;
+    height: 100%;
+    min-height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: zoom-in;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  }
+
+  .project-images img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 6px 16px rgba(0,0,0,.3);
+  }
+
+  /* === Tecnologías === */
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.8rem;
+  }
+
+  .tech-chip {
+    background: rgba(255,255,255,.09);
+    color: var(--text);
+    font-size: 0.74rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.14);
+    white-space: nowrap;
+    transition: var(--transition);
+  }
+
+  .tech-chip:hover {
+    background: rgba(110,86,207,.25);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  /* ===== Overlay de Imágenes ===== */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .overlay.active {
+    display: flex;
+    opacity: 1;
+  }
+  .overlay-content {
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: zoomIn 0.3s ease;
+    cursor: zoom-out;
+  }
+  @keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* ===== Animations ===== */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  [data-animate].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .main-content {
+      padding: 2rem 1rem;
+    }
+    .back-nav-container {
+      margin-bottom: 1.5rem;
+    }
+    .content-container h1 {
+      margin-bottom: 2rem;
+    }
+    :root {
+      --project-min-height: 500px;
+      --images-area-height: 140px;
+    }
+    .resource-items {
+      gap: 1.8rem;
+    }
+    .project-card {
+      padding: 1.4rem;
+      max-width: 100%;
+    }
+    .project-images {
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 0.5rem;
+    }
+    .tech-chip {
+      font-size: 0.7rem;
+      padding: 0.3rem 0.6rem;
+    }
+    .overlay-content {
+      max-width: 95vw;
+      max-height: 90vh;
+    }
+    .grid-svg {
+      width: 1200px;
+      filter: blur(50px);
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      max-width: 950px;
+    }
+    :root {
+      --project-max-width: 760px;
+      --project-min-height: 480px;
+    }
+  }
 </style>
 
-</Layout>
+<script>
+  // Observer para animaciones
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+  // Overlay: abrir con click en imagen
+  document.addEventListener('click', (e) => {
+    if (e.target.matches('[data-lightbox]') || e.target.closest('[data-lightbox]')) {
+      e.preventDefault();
+      const img = e.target.closest('img') || e.target;
+      const src = img.getAttribute('src') || img.getAttribute('href');
+      const overlay = document.getElementById('overlay');
+      const overlayImg = document.getElementById('overlay-img');
+      overlayImg.src = src;
+      overlay.classList.add('active');
+    }
+    if (e.target.id === 'overlay' || e.target.id === 'overlay-img') {
+      const overlay = document.getElementById('overlay');
+      overlay.classList.remove('active');
+      setTimeout(() => { document.getElementById('overlay-img').src = ''; }, 300);
+    }
+  });
+
+  // Cerrar con ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const overlay = document.getElementById('overlay');
+      if (overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        setTimeout(() => { document.getElementById('overlay-img').src = ''; }, 300);
+      }
+    }
+  });
+</script>

@@ -1,4 +1,49 @@
 export const projects = [
+    {
+    title: "Scan4All App",
+    desc: [
+      "Aplicación móvil desarrollada con React Native + Expo para analizar archivos y URLs mediante la API pública de VirusTotal.",
+      "Funciona como cliente visual para el backend Scan4All API, mostrando estado, resultado y estadísticas de seguridad de cada análisis.",
+      "Permite subir archivos (PDF, JPG, EXE, ZIP, etc.), analizar enlaces web y ver el progreso del análisis en tiempo real.",
+      "Ofrece un resumen visual del resultado (seguro, malicioso o no soportado) y muestra los motores antivirus participantes.",
+    ],
+    tech: [
+      "React Native (Expo SDK 52)",
+      "TypeScript",
+      "React Navigation",
+      "Ionicons",
+      "React Native Stylesheet",
+      "FastAPI",
+      "VirusTotal API v3",
+      "Expo EAS CLI"
+    ],
+    repo: "https://github.com/tonyslabs/scan4all-app",
+    images: [
+      "/images/scan/1.png",
+      "/images/scan/2.png",
+      "/images/scan/3.png"
+    ],
+  },
+  {
+    title: "Scan4All API",
+    desc: [
+      "Backend desarrollado en Python + FastAPI que actúa como intermediario entre la app móvil y la API de VirusTotal.",
+      "Evita exponer directamente la VT_API_KEY en el cliente y añade control sobre tipos de archivos, tamaño máximo y seguridad básica.",
+      "Permite analizar archivos y URLs, devolver el ID del análisis y consultar su estado hasta obtener el resultado final.",
+      "Incluye configuración de CORS, manejo de errores y variables de entorno mediante python-dotenv.",
+    ],
+    tech: [
+      "Python",
+      "FastAPI",
+      "httpx",
+      "fastapi.middleware.cors",
+      "python-dotenv",
+      "VirusTotal API v3",
+      "Uvicorn"
+    ],
+    repo: "https://github.com/tonyslabs/scan4all-api",
+    images: [],
+  },
   {
     title: "HiResSpot",
     desc: [
@@ -8,7 +53,7 @@ export const projects = [
       "Incluye controles de reproducción y navegación por álbumes, artistas y pistas.",
     ],
     tech: ["Electron", "React", "TypeScript", "TailwindCSS", "Node.js", "Vite"],
-    repo: "https://github.com/tonyslabs/hiresspot",
+    repo: "https://github.com/Anthonyslabs/hiresspot",
     images: [
       "/images/hires/1.png",
       "/images/hires/2.png",
@@ -24,7 +69,7 @@ export const projects = [
       "Diseño responsivo con Tailwind CSS y caché optimizada para alto rendimiento.",
     ],
     tech: ["Laravel", "TailwindCSS", "Alpine.js", "Vite"],
-    repo: "https://github.com/tonyslabs/filmsociety",
+    repo: "https://github.com/Anthonyslabs/filmsociety",
     site: "https://filmsocialclub.io/",
     images: [
       "/images/film/1.png",
@@ -35,5 +80,4 @@ export const projects = [
       "/images/film/6.png"
     ],
   }
-
 ];

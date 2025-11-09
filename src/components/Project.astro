@@ -1,40 +1,57 @@
 ---
-const { title, desc, tech, images = [], repo } = Astro.props;
+const { title, desc, tech, images = [], repo, site } = Astro.props;
 ---
 
 <article class="project-card" client:load>
-  {repo && (
-    <a
-      href={repo}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="repo-btn"
-      aria-label="Abrir repositorio en GitHub"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="#ffffff"
-        class="bi bi-github"
-        viewBox="0 0 16 16"
+  <div class="actions">
+    {site && (
+      <a
+        href={site}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="site-btn"
+        aria-label="Abrir sitio del proyecto"
       >
-        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
-        0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
-        -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87
-        2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
-        0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
-        0 0 .67-.21 2.2.82.64-.18 1.32-.27
-        2-.27s1.36.09 2 .27c1.53-1.04
-        2.2-.82 2.2-.82.44 1.1.16 1.92.08
-        2.12.51.56.82 1.27.82 2.15
-        0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54
-        1.48 0 1.07-.01 1.93-.01 2.2
-        0 .21.15.46.55.38A8.01 8.01 0 0 0 16
-        8c0-4.42-3.58-8-8-8"/>
-      </svg>
-    </a>
-  )}
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
+          <path d="M6.354 5.5H4.5a.5.5 0 0 0-.5.5v6a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 .5-.5v-1.854a.5.5 0 0 1 1 0V12a1.5 1.5 0 0 1-1.5 1.5h-6A1.5 1.5 0 0 1 3 12V6A1.5 1.5 0 0 1 4.5 4.5h1.854a.5.5 0 1 1 0 1Z"/>
+          <path d="M11 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V3.707l-6.146 6.147a.5.5 0 0 1-.708-.708L13.293 3H11.5a.5.5 0 0 1-.5-.5Z"/>
+        </svg>
+      </a>
+    )}
+
+    {repo && (
+      <a
+        href={repo}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="repo-btn"
+        aria-label="Abrir repositorio en GitHub"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="#ffffff"
+          class="bi bi-github"
+          viewBox="0 0 16 16"
+        >
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+          0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+          -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87
+          2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+          0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
+          0 0 .67-.21 2.2.82.64-.18 1.32-.27
+          2-.27s1.36.09 2 .27c1.53-1.04
+          2.2-.82 2.2-.82.44 1.1.16 1.92.08
+          2.12.51.56.82 1.27.82 2.15
+          0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54
+          1.48 0 1.07-.01 1.93-.01 2.2
+          0 .21.15.46.55.38A8.01 8.01 0 0 0 16
+          8c0-4.42-3.58-8-8-8"/>
+        </svg>
+      </a>
+    )}
+  </div>
 
   <h3 class="project-title">{title}</h3>
 
@@ -58,12 +75,6 @@ const { title, desc, tech, images = [], repo } = Astro.props;
     </div>
   )}
 
-  <div id="overlay" class="overlay">
-    <div class="overlay-content">
-      <img id="overlay-img" src="" alt="expanded" />
-    </div>
-  </div>
-
   <div class="label">Technologies &amp; Tools</div>
   <div class="tech-list">
     {tech.map((t) => (
@@ -77,6 +88,8 @@ const { title, desc, tech, images = [], repo } = Astro.props;
     const galleryImgs = document.querySelectorAll(".gallery-img");
     const overlay = document.getElementById("overlay");
     const overlayImg = document.getElementById("overlay-img");
+
+    if (!overlay || !overlayImg) return;
 
     galleryImgs.forEach((img) => {
       img.addEventListener("click", () => {
@@ -108,11 +121,17 @@ const { title, desc, tech, images = [], repo } = Astro.props;
   background: rgba(255, 255, 255, 0.07);
 }
 
-/* Botón GitHub */
-.repo-btn {
+/* Botones superiores */
+.actions {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.repo-btn,
+.site-btn {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 50%;
@@ -123,7 +142,8 @@ const { title, desc, tech, images = [], repo } = Astro.props;
   justify-content: center;
   transition: background 0.2s ease, transform 0.2s ease;
 }
-.repo-btn:hover {
+.repo-btn:hover,
+.site-btn:hover {
   background: rgba(255, 255, 255, 0.18);
   transform: scale(1.1);
 }
@@ -179,43 +199,6 @@ const { title, desc, tech, images = [], repo } = Astro.props;
   filter: brightness(110%);
 }
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  border-radius: 18px;
-  overflow: hidden; /* recorta cualquier borde sobrante */
-}
-
-.overlay.active {
-  display: flex;
-}
-
-.overlay-content {
-  max-width: 90vw;
-  max-height: 85vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
-}
-
-.overlay img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: inherit;
-  animation: zoomIn 0.25s ease;
-  cursor: zoom-out;
-}
-
-
 /* Etiqueta y tecnologías */
 .label {
   font-family: "Inter", system-ui, sans-serif;
@@ -253,14 +236,12 @@ const { title, desc, tech, images = [], repo } = Astro.props;
 .tech[data-tech="TailwindCSS"] { background: rgba(14, 165, 233, 0.15); color: #0ea5e9; }
 .tech[data-tech="Node.js"] { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
 .tech[data-tech="Vite"] { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.tech[data-tech="Laravel"] { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+.tech[data-tech="Alpine.js"] { background: rgba(236, 72, 153, 0.15); color: #ec4899; }
 
 /* Animaciones */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
-}
-@keyframes zoomIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
 }
 </style>

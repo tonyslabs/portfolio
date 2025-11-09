@@ -36,22 +36,5 @@ export const projects = [
       "Alpine.js",
     ]
   },
-  {
-    title: "Streaming System",
-    desc: [
-      "Custom streaming platform that aggregates and resolves video sources from multiple providers.",
-      "Uses AIOStreams + AllDebrid for caching and link resolution, TorrServer for P2P streaming, and a Laravel proxy for playback.",
-      "Implements Range and Content-Type preservation for stable streaming sessions across browsers.",
-      "Frontend built with Tailwind + Alpine.js, including search filters, playback logs, and progress tracking.",
-    ],
-    tech: [
-      "Laravel",
-      "FastAPI",
-      "AIOStreams",
-      "AllDebrid API",
-      "TorrServer",
-      "TailwindCSS",
-    ]
-  },
 ];
 

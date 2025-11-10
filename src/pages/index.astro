@@ -2,15 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import Sidebar from "../components/Sidebar.astro";
 const meta = {
-  title: "Anthony Lacayo | Web Systems, APIs, Infrastructure",
+  title: "Anthony Lacayo | Full Stack Web Developer",
   description:
-    "Full Stack developer focused on backend architecture, API design, and system integration.",
+    "Developer specialized in modern web systems, backend architecture, and automation pipelines.",
   image: "/og-image.jpg",
   url: "https://anthonylacayo.com",
 };
 ---
 <Layout {...meta} path="/">
-  <!-- FONDO DIFUMINADO CON GRID SVG -->
   <div class="grid-background">
     <img src="/assets/grid-top-right.svg" alt="" class="grid-svg" />
   </div>
@@ -18,71 +17,100 @@ const meta = {
     <Sidebar selectedItem="home" />
     <main class="main-content">
       <div class="container">
-        <!-- Hero Section -->
+        <!-- Hero -->
         <section class="hero" data-animate>
           <div class="hero-content">
             <h1>Hi, I'm Anthony.<br />I build and connect web systems.</h1>
             <p class="lead">
               Full Stack developer focused on backend architecture, API design,
-              and system integration. Specialized in Laravel, FastAPI, and
-              REST/JSON-based communication between platforms. Passionate about
-              automation, scalability, and clean code.
+              and automation pipelines. Experienced with Laravel, FastAPI, and
+              REST/JSON integrations. Passionate about performance, scalability,
+              and elegant interfaces.
             </p>
             <a href="mailto:Anthony@strivexlabs.com" class="contact-btn">
               Contact <span class="btn-arrow">→</span>
             </a>
           </div>
         </section>
-        <!-- Projects Scroll -->
+
+        <!-- Expertise -->
         <section class="projects-section" data-animate>
           <div class="section-header">
-            <h2>My Expertise</h2>
+            <h2>My Development Areas</h2>
           </div>
           <div class="projects-track" id="projects-track">
-            <!-- Web Development -->
-            <a href="/web-development" class="project-card" aria-label="Web Development projects">
-              <div class="icon"><img src="/assets/browser.svg" alt="" /></div>
+            <!-- Frontend & UX -->
+            <a href="/web-development" class="project-card" aria-label="Frontend and UX Design">
+              <div class="icon">
+                <img src="/assets/icons/layout.svg" alt="Frontend Icon" />
+              </div>
               <div class="content">
-                <h3>Web Development</h3>
+                <h3>Frontend & UX Design</h3>
+                <div class="chips">
+                  <span class="chip">Astro</span>
+                  <span class="chip">React</span>
+                  <span class="chip">Alpine.js</span>
+                  <span class="chip">TailwindCSS</span>
+                  <span class="chip">Vite</span>
+                  <span class="chip">TypeScript</span>
+                  <span class="chip">Responsive UI</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Backend & APIs -->
+            <a href="/api-integrations" class="project-card" aria-label="Backend and API Development">
+              <div class="icon">
+                <img src="/assets/icons/server.svg" alt="Backend Icon" />
+              </div>
+              <div class="content">
+                <h3>Backend & API Development</h3>
                 <div class="chips">
                   <span class="chip">Laravel</span>
                   <span class="chip">FastAPI</span>
-                  <span class="chip">MySQL</span>
+                  <span class="chip">Python</span>
                   <span class="chip">PHP</span>
-                  <span class="chip">Alpine.js</span>
-                  <span class="chip">TailwindCSS</span>
-                  <span class="chip">Astro</span>
+                  <span class="chip">MySQL</span>
+                  <span class="chip">PostgreSQL</span>
+                  <span class="chip">REST / JSON</span>
                 </div>
               </div>
             </a>
-            <!-- API Integrations -->
-            <a href="/api-integrations" class="project-card" aria-label="API Development & Integrations">
-              <div class="icon"><img src="/assets/coding.svg" alt="" /></div>
-              <div class="content">
-                <h3>API Development & Integrations</h3>
-                <div class="chips">
-                  <span class="chip">REST</span>
-                  <span class="chip">SOAP</span>
-                  <span class="chip">Postman</span>
-                  <span class="chip">WooCommerce API</span>
-                  <span class="chip">Shopify API</span>
-                  <span class="chip">MercadoLibre</span>
-                </div>
+
+            <!-- Automation & infrastructuretructure -->
+            <a href="/infrastructure" class="project-card" aria-label="Automation and infrastructuretructure">
+              <div class="icon">
+                <img src="/assets/icons/terminal.svg" alt="DevOps Icon" />
               </div>
-            </a>
-            <!-- Infrastructure -->
-            <a href="/infrastructure" class="project-card" aria-label="Infrastructure & Automation">
-              <div class="icon"><img src="/assets/database.svg" alt="" /></div>
               <div class="content">
-                <h3>Infrastructure & Automation</h3>
+                <h3>Automation & infrastructuretructure</h3>
                 <div class="chips">
                   <span class="chip">Linux</span>
                   <span class="chip">Docker</span>
                   <span class="chip">Nginx</span>
-                  <span class="chip">Bash</span>
                   <span class="chip">GitHub Actions</span>
                   <span class="chip">Cron</span>
                   <span class="chip">CI/CD</span>
+                  <span class="chip">Bash</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Personal Projects -->
+            <a href="/personal-projects" class="project-card" aria-label="Personal Projects and Experiments">
+              <div class="icon">
+                <img src="/assets/icons/flask.svg" alt="Personal Icon" />
+              </div>
+              <div class="content">
+                <h3>Personal Projects & Experiments</h3>
+                <div class="chips">
+                  <span class="chip">Electron</span>
+                  <span class="chip">Nextcloud</span>
+                  <span class="chip">Tailscale</span>
+                  <span class="chip">Self-Hosting</span>
+                  <span class="chip">Media Streaming</span>
+                  <span class="chip">APIs</span>
+                  <span class="chip">Open Source</span>
                 </div>
               </div>
             </a>
@@ -92,6 +120,7 @@ const meta = {
     </main>
   </div>
 </Layout>
+
 <style>
   :root {
     --bg: linear-gradient(180deg, rgba(20, 20, 28, 0.98) 0%, rgba(10, 10, 18, 0.98) 100%);

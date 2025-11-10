@@ -40,7 +40,7 @@ export const projects = [
       "Set of Bash utilities for monitoring, backup, and log cleanup across remote Linux servers.",
       "Automated weekly maintenance routines and disk health checks using smartctl and crontab.",
       "Centralized log rotation system with Telegram notifications on error thresholds.",
-      "Designed for shared hosting and VPS instances managed under Strivex Labs infrastructure.",
+      "Designed for shared hosting and VPS instances managed under Strivex Labs infrastructuretructure.",
     ],
     tech: ["Bash", "Linux", "smartctl", "Cron", "SSH", "Telegram API"],
   },

@@ -5,33 +5,40 @@ import Sidebar from "../components/Sidebar.astro";
 import { projects } from "../data/web";
 
 const meta = {
-  title: "Web Development | Anthony Lacayo",
-  description: "Selected web apps and systems: Laravel, FastAPI, Tailwind.",
+  title: "Frontend & UX | Anthony Lacayo",
+  description:
+    "Modern interfaces and responsive web systems using Astro, React, and TailwindCSS.",
   image: "/og-image.jpg",
-  url: "https://anthonylacayo.com/web-development",
+  url: "https://anthonylacayo.com/frontend-ux",
 };
 ---
-<Layout {...meta} path="/web-development">
-  <!-- FONDO DIFUMINADO CON GRID SVG -->
+
+<Layout {...meta} path="/frontend-ux">
+  <!-- Fondo difuminado -->
   <div class="grid-background">
     <img src="/assets/grid-top-right.svg" alt="" class="grid-svg" />
   </div>
 
   <div class="page-wrapper">
-    <Sidebar selectedItem="web-development" />
+    <Sidebar selectedItem="frontend-ux" />
     <main class="main-content">
       <div class="container">
-        <!-- Back Navigation -->
+        <!-- Back -->
         <div class="back-nav-container" data-animate>
-          <a href="/" class="back-nav-button">
-            <img src="/assets/back.svg" loading="lazy" alt="Back" class="back-nav-img" />
+          <a href="/" class="back-nav-button" aria-label="Go back to homepage">
+            <img src="/assets/back.svg" alt="Back arrow" class="back-nav-img" />
             <span>Back</span>
           </a>
         </div>
 
         <!-- Content -->
-        <div class="content-container" data-animate>
-          <h1>Web Development</h1>
+          <h1>Frontend & UX</h1>
+          <p class="section-intro">
+            Selected front-end projects focused on performance, responsive
+            design, and accessibility. Each interface is built using Astro,
+            React, TailwindCSS, and modern web standards.
+          </p>
+
           <section class="items-container">
             <div class="resource-items">
               {
@@ -55,7 +62,11 @@ const meta = {
 
 <style>
   :root {
-    --bg: linear-gradient(180deg, rgba(20, 20, 28, 0.98) 0%, rgba(10, 10, 18, 0.98) 100%);
+    --bg: linear-gradient(
+      180deg,
+      rgba(20, 20, 28, 0.98) 0%,
+      rgba(10, 10, 18, 0.98) 100%
+    );
     --accent: #6e56cf;
     --accent-hover: #8b70ff;
     --text: #e2e8f0;
@@ -67,10 +78,11 @@ const meta = {
     --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* ===== GRID SVG DIFUMINADO AL FONDO ===== */
+  /* Fondo */
   .grid-background {
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     pointer-events: none;
@@ -83,39 +95,38 @@ const meta = {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1800px;
-    height: auto;
-    max-width: none;
     opacity: 0.14;
     filter: blur(70px) brightness(1.4);
-    user-select: none;
   }
 
-  /* ===== Layout ===== */
+  /* Layout */
   .page-wrapper {
     position: relative;
     z-index: 1;
     display: flex;
     min-height: 100vh;
     background: var(--bg);
-    background-attachment: fixed;
     color: var(--text);
     overflow: hidden;
   }
-
   .main-content {
     flex: 1;
     padding: 3rem 2rem;
-    overflow-x: hidden;
     padding-left: calc(var(--sidebar-width) + 2rem);
     position: relative;
     z-index: 2;
   }
   @media (max-width: 900px) {
-    .main-content { padding-left: 1rem; }
+    .main-content {
+      padding-left: 1rem;
+    }
   }
-  .container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
 
-  /* ===== Back Button ===== */
+  /* Back */
   .back-nav-container {
     margin-bottom: 2rem;
   }
@@ -125,13 +136,11 @@ const meta = {
     gap: 0.6rem;
     color: var(--text-muted);
     font-size: 0.95rem;
-    font-weight: 500;
     text-decoration: none;
     transition: var(--transition);
-    padding: 0.4rem 0;
   }
   .back-nav-button:hover {
-    color: white;
+    color: #fff;
     transform: translateX(-4px);
   }
   .back-nav-img {
@@ -146,50 +155,74 @@ const meta = {
     transform: translateX(-2px);
   }
 
-  /* ===== Content ===== */
+  /* Título y descripción */
   .content-container h1 {
     font-size: clamp(2.2rem, 5vw, 2.8rem);
     font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 2.5rem;
+    margin-bottom: 1rem;
     background: linear-gradient(135deg, #fff, #d0d4ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: -0.5px;
+  }
+  .section-intro {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 720px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
   }
 
-  .items-container {
-    margin-top: 1rem;
-  }
-
+  /* Grid de proyectos */
+  /* Grid de proyectos */
   .resource-items {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
-    padding: 0;
-    list-style: none;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(380px, 1fr)
+    ); /* antes 320px */
+    gap: 2.4rem; /* un poco más de separación */
   }
 
-  /* ===== Animations ===== */
+  /* Responsive */
+  @media (max-width: 768px) {
+    .resource-items {
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .resource-items {
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(420px, 1fr)
+      ); /* más aire en pantallas grandes */
+    }
+  }
+
+  /* Animaciones */
   [data-animate] {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s ease;
   }
   [data-animate].visible {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* ===== Responsive ===== */
+  /* Responsive */
   @media (max-width: 768px) {
     .main-content {
       padding: 2rem 1rem;
     }
-    .back-nav-container {
-      margin-bottom: 1.5rem;
-    }
     .content-container h1 {
+      margin-bottom: 0.8rem;
+    }
+    .section-intro {
+      font-size: 0.95rem;
       margin-bottom: 2rem;
     }
     .resource-items {
@@ -201,18 +234,17 @@ const meta = {
       filter: blur(50px);
     }
   }
-
-  @media (min-width: 1400px) {
-    .resource-items {
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    }
-  }
 </style>
 
 <script>
   const observer = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-    { threshold: 0.1 }
+    (entries) =>
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add("visible");
+      }),
+    { threshold: 0.1 },
   );
-  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+  document
+    .querySelectorAll("[data-animate]")
+    .forEach((el) => observer.observe(el));
 </script>

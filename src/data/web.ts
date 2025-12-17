@@ -2,10 +2,10 @@ export const projects = [
   {
     title: "Divia",
     desc: [
-      "Business management platform that connects suppliers with e-commerce stores.",
-      "Originally built with Laravel 11, now partially migrated to FastAPI for asynchronous API performance.",
-      "Implements product catalog synchronization, price lists, and supplier communication through structured APIs.",
-      "Integrates WooCommerce and Shopify APIs for inventory updates, price sync, and order tracking.",
+      "Plataforma de gestión empresarial que conecta proveedores con tiendas e-commerce.",
+      "Construida originalmente con Laravel 11 y migrada parcialmente a FastAPI para mejorar el rendimiento asíncrono.",
+      "Implementa sincronización de catálogo, listas de precios y comunicación con proveedores mediante APIs estructuradas.",
+      "Integra APIs de WooCommerce y Shopify para actualizar inventario, sincronizar precios y hacer seguimiento de pedidos.",
     ],
     tech: [
       "Laravel",
@@ -22,10 +22,10 @@ export const projects = [
   {
     title: "OperisOne",
     desc: [
-      "Enterprise Resource Management (ERP) system designed to handle clients, vendors, products, and accounting modules.",
-      "Backend written in Python (FastAPI) using async SQLAlchemy and Pydantic schemas for efficient query mapping.",
-      "Implements SOAP-based integrations and REST endpoints for external system connectivity.",
-      "Frontend powered by Laravel Blade + Alpine.js for interactive dashboards and dynamic data filtering.",
+      "Sistema ERP diseñado para gestionar clientes, proveedores, productos y módulos contables.",
+      "Backend en Python (FastAPI) con SQLAlchemy async y esquemas Pydantic para mapeo eficiente de consultas.",
+      "Incluye integraciones SOAP y endpoints REST para conectividad con sistemas externos.",
+      "Frontend con Laravel Blade + Alpine.js para dashboards interactivos y filtros dinámicos.",
     ],
     tech: [
       "FastAPI",
@@ -37,4 +37,3 @@ export const projects = [
     ]
   },
 ];
-

@@ -5,11 +5,11 @@ export function setupLightbox() {
     overlay.className = 'lightbox-overlay';
     overlay.innerHTML = `
       <div class="lightbox-backdrop"></div>
-      <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Image viewer">
-        <button class="lightbox-close" aria-label="Close">×</button>
-        <img class="lightbox-image" alt="Expanded image" />
-        <button class="lightbox-prev" aria-label="Previous">‹</button>
-        <button class="lightbox-next" aria-label="Next">›</button>
+      <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
+        <button class="lightbox-close" aria-label="Cerrar">×</button>
+        <img class="lightbox-image" alt="Imagen ampliada" />
+        <button class="lightbox-prev" aria-label="Anterior">‹</button>
+        <button class="lightbox-next" aria-label="Siguiente">›</button>
       </div>
     `;
     document.body.appendChild(overlay);
@@ -99,4 +99,3 @@ export function setupLightbox() {
     backdrop.removeEventListener('click', onBackdrop);
   };
 }
-

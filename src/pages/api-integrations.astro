@@ -5,8 +5,8 @@ import Sidebar from "../components/Sidebar.astro";
 import { projects } from "../data/api";
 
 const meta = {
-  title: "API Development & Integrations | Anthony Lacayo",
-  description: "REST/SOAP integrations, adapters, and background processing with FastAPI.",
+  title: "Desarrollo de APIs e Integraciones | Anthony Lacayo",
+  description: "Integraciones REST/SOAP, adaptadores y procesamiento en segundo plano con FastAPI.",
   image: "/og-image.jpg",
   url: "https://anthonylacayo.com/api-integrations",
 };
@@ -25,13 +25,13 @@ const meta = {
         <div class="back-nav-container" data-animate>
           <a href="/" class="back-nav-button">
             <img src="/assets/back.svg" loading="lazy" alt="Back" class="back-nav-img" />
-            <span>Back</span>
+            <span>Volver</span>
           </a>
         </div>
 
         <!-- Content -->
         <div class="content-container" data-animate>
-          <h1>API Development &amp; Integrations</h1>
+          <h1>Desarrollo de APIs e Integraciones</h1>
           <section class="items-container">
             <div class="resource-items">
               {
@@ -54,11 +54,11 @@ const meta = {
 
 <style>
   :root {
-    --bg: linear-gradient(180deg, rgba(20, 20, 28, 0.98) 0%, rgba(10, 10, 18, 0.98) 100%);
-    --accent: #6e56cf;
-    --accent-hover: #8b70ff;
-    --text: #e2e8f0;
-    --text-muted: #94a3b8;
+    --bg: linear-gradient(180deg, rgba(7, 10, 38, 0.98) 0%, rgba(7, 10, 38, 0.92) 100%);
+    --accent: #863dff;
+    --accent-hover: #dde0ff;
+    --text: #ffffff;
+    --text-muted: #dde0ff;
     --card-bg: rgba(255, 255, 255, 0.04);
     --card-border: rgba(255, 255, 255, 0.08);
     --radius: 18px;
@@ -103,9 +103,9 @@ const meta = {
 
   .main-content {
     flex: 1;
-    padding: 3rem 2rem;
+    padding: 2.2rem 1.5rem;
     overflow-x: hidden;
-    padding-left: calc(var(--sidebar-width) + 2rem);
+    padding-left: calc(var(--sidebar-width) + 1.5rem);
     position: relative;
     z-index: 2;
   }
@@ -207,11 +207,3 @@ const meta = {
     }
   }
 </style>
-
-<script>
-  const observer = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-    { threshold: 0.1 }
-  );
-  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-</script>

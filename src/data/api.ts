@@ -2,10 +2,10 @@ export const projects = [
   {
     title: "Divia API Layer",
     desc: [
-      "Built a REST API middleware between suppliers and client stores using FastAPI.",
-      "Implements dynamic product synchronization, stock updates, and pricing rules through modular endpoints.",
-      "Handles WooCommerce, Shopify, and SOAP-based supplier systems via unified data adapters.",
-      "Each client runs isolated through environment-based configuration and token authentication.",
+      "Middleware REST entre proveedores y tiendas cliente usando FastAPI.",
+      "Implementa sincronización dinámica de productos, actualización de stock y reglas de precio mediante endpoints modulares.",
+      "Integra WooCommerce, Shopify y sistemas de proveedores vía SOAP con adaptadores unificados.",
+      "Cada cliente corre aislado mediante configuración por entorno y autenticación por token.",
     ],
     tech: [
       "FastAPI",
@@ -20,10 +20,10 @@ export const projects = [
   {
     title: "OperisOne Connect",
     desc: [
-      "Integration hub that links OperisOne ERP with external accounting and logistics systems.",
-      "Implements SOAP and REST connectors, validating and transforming data to internal schemas.",
-      "Uses async background tasks for queued syncs, retry logic, and Telegram notifications on error events.",
-      "All endpoints documented using OpenAPI/Swagger for internal use by developers and partners.",
+      "Hub de integración que conecta el ERP OperisOne con sistemas externos de contabilidad y logística.",
+      "Conectores SOAP y REST con validación y transformación a esquemas internos.",
+      "Tareas asíncronas en segundo plano para colas de sincronización, reintentos y notificaciones por Telegram ante errores.",
+      "Endpoints documentados con OpenAPI/Swagger para uso interno de desarrolladores y partners.",
     ],
     tech: [
       "FastAPI",
@@ -38,10 +38,10 @@ export const projects = [
   {
     title: "Telegram Automation API",
     desc: [
-      "Internal service for automated error reporting and status notifications via Telegram bots.",
-      "Integrates directly with Laravel and FastAPI services using webhook event delivery.",
-      "Handles background processing of logs, API errors, and data import results in real-time.",
-      "Supports dynamic message templates and modular routing for multi-client usage.",
+      "Servicio interno para reportes automáticos de errores y notificaciones de estado vía bots de Telegram.",
+      "Integración directa con servicios Laravel y FastAPI mediante webhooks.",
+      "Procesamiento en segundo plano de logs, errores de API y resultados de importación en tiempo real.",
+      "Plantillas dinámicas y ruteo modular para uso multi-cliente.",
     ],
     tech: [
       "Python",
@@ -53,4 +53,3 @@ export const projects = [
     ],
   },
 ];
-

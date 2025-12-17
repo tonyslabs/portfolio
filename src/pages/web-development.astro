@@ -5,40 +5,35 @@ import Sidebar from "../components/Sidebar.astro";
 import { projects } from "../data/web";
 
 const meta = {
-  title: "Frontend & UX | Anthony Lacayo",
+  title: "Frontend y UX | Anthony Lacayo",
   description:
-    "Modern interfaces and responsive web systems using Astro, React, and TailwindCSS.",
+    "Interfaces modernas y sistemas web responsivos con Astro, React y TailwindCSS.",
   image: "/og-image.jpg",
-  url: "https://anthonylacayo.com/frontend-ux",
+  url: "https://anthonylacayo.com/web-development",
 };
 ---
 
-<Layout {...meta} path="/frontend-ux">
+<Layout {...meta} path="/web-development">
   <!-- Fondo difuminado -->
   <div class="grid-background">
     <img src="/assets/grid-top-right.svg" alt="" class="grid-svg" />
   </div>
 
   <div class="page-wrapper">
-    <Sidebar selectedItem="frontend-ux" />
+    <Sidebar selectedItem="web-development" />
     <main class="main-content">
       <div class="container">
         <!-- Back -->
         <div class="back-nav-container" data-animate>
-          <a href="/" class="back-nav-button" aria-label="Go back to homepage">
-            <img src="/assets/back.svg" alt="Back arrow" class="back-nav-img" />
-            <span>Back</span>
+          <a href="/" class="back-nav-button" aria-label="Volver al inicio">
+            <img src="/assets/back.svg" alt="Flecha de volver" class="back-nav-img" />
+            <span>Volver</span>
           </a>
         </div>
 
         <!-- Content -->
-          <h1>Frontend & UX</h1>
-          <p class="section-intro">
-            Selected front-end projects focused on performance, responsive
-            design, and accessibility. Each interface is built using Astro,
-            React, TailwindCSS, and modern web standards.
-          </p>
-
+        <div class="content-container" data-animate>
+          <h1>Frontend y UX</h1>
           <section class="items-container">
             <div class="resource-items">
               {
@@ -64,18 +59,19 @@ const meta = {
   :root {
     --bg: linear-gradient(
       180deg,
-      rgba(20, 20, 28, 0.98) 0%,
-      rgba(10, 10, 18, 0.98) 100%
+      rgba(7, 10, 38, 0.98) 0%,
+      rgba(7, 10, 38, 0.92) 100%
     );
-    --accent: #6e56cf;
-    --accent-hover: #8b70ff;
-    --text: #e2e8f0;
-    --text-muted: #94a3b8;
+    --accent: #863dff;
+    --accent-hover: #dde0ff;
+    --text: #ffffff;
+    --text-muted: #dde0ff;
     --card-bg: rgba(255, 255, 255, 0.04);
     --card-border: rgba(255, 255, 255, 0.08);
     --radius: 18px;
     --sidebar-width: 260px;
     --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --project-card-max: 1280px;
   }
 
   /* Fondo */
@@ -106,15 +102,17 @@ const meta = {
     display: flex;
     min-height: 100vh;
     background: var(--bg);
+    background-attachment: fixed;
     color: var(--text);
     overflow: hidden;
   }
   .main-content {
     flex: 1;
-    padding: 3rem 2rem;
-    padding-left: calc(var(--sidebar-width) + 2rem);
+    padding: 2.2rem 1.5rem;
+    padding-left: calc(var(--sidebar-width) + 1.5rem);
     position: relative;
     z-index: 2;
+    overflow-x: hidden;
   }
   @media (max-width: 900px) {
     .main-content {
@@ -124,6 +122,8 @@ const meta = {
   .container {
     max-width: 1400px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
   }
 
   /* Back */
@@ -136,8 +136,10 @@ const meta = {
     gap: 0.6rem;
     color: var(--text-muted);
     font-size: 0.95rem;
+    font-weight: 500;
     text-decoration: none;
     transition: var(--transition);
+    padding: 0.4rem 0;
   }
   .back-nav-button:hover {
     color: #fff;
@@ -167,37 +169,22 @@ const meta = {
   .section-intro {
     color: var(--text-muted);
     font-size: 1rem;
-    max-width: 720px;
     line-height: 1.7;
     margin-bottom: 2.5rem;
   }
 
-  /* Grid de proyectos */
-  /* Grid de proyectos */
+  /* Lista de proyectos (igual que /personal-projects) */
+  .items-container {
+    margin-top: 1rem;
+  }
   .resource-items {
-    display: grid;
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(380px, 1fr)
-    ); /* antes 320px */
-    gap: 2.4rem; /* un poco más de separación */
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .resource-items {
-      grid-template-columns: 1fr;
-      gap: 1.8rem;
-    }
-  }
-
-  @media (min-width: 1400px) {
-    .resource-items {
-      grid-template-columns: repeat(
-        auto-fill,
-        minmax(420px, 1fr)
-      ); /* más aire en pantallas grandes */
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    width: 100%;
   }
 
   /* Animaciones */
@@ -225,26 +212,9 @@ const meta = {
       font-size: 0.95rem;
       margin-bottom: 2rem;
     }
-    .resource-items {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
     .grid-svg {
       width: 1200px;
       filter: blur(50px);
     }
   }
 </style>
-
-<script>
-  const observer = new IntersectionObserver(
-    (entries) =>
-      entries.forEach((e) => {
-        if (e.isIntersecting) e.target.classList.add("visible");
-      }),
-    { threshold: 0.1 },
-  );
-  document
-    .querySelectorAll("[data-animate]")
-    .forEach((el) => observer.observe(el));
-</script>

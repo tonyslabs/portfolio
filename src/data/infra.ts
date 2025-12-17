@@ -2,10 +2,10 @@ export const projects = [
   {
     title: "Strivex Deploy Pipeline",
     desc: [
-      "Automated deployment system for Laravel and FastAPI services on shared and VPS environments.",
-      "Uses GitHub Actions with SFTP Deploy and remote Bash scripts for zero-downtime updates.",
-      "Includes branch-based staging and production syncs with environment variable injection.",
-      "Implements log parsing and Telegram alerts for each deployment step.",
+      "Sistema de despliegue automatizado para servicios Laravel y FastAPI en entornos compartidos y VPS.",
+      "Usa GitHub Actions con SFTP Deploy y scripts remotos Bash para actualizaciones sin downtime.",
+      "Incluye sincronización de staging/producción por rama e inyección de variables de entorno.",
+      "Parseo de logs y alertas por Telegram en cada paso del despliegue.",
     ],
     tech: [
       "GitHub Actions",
@@ -19,10 +19,10 @@ export const projects = [
   {
     title: "Containerized Local Dev Environment",
     desc: [
-      "Dockerized development stack for multi-service orchestration (Laravel, FastAPI, MySQL, Redis).",
-      "Custom Docker Compose setup for consistent local-to-production parity.",
-      "Includes volume persistence, automatic hot-reload, and shared .env injection for both services.",
-      "Configured lightweight Nginx proxy layer with SSL for secure API testing.",
+      "Stack de desarrollo con Docker para orquestación multi-servicio (Laravel, FastAPI, MySQL, Redis).",
+      "Configuración personalizada de Docker Compose para mantener paridad local/producción.",
+      "Persistencia de volúmenes, hot-reload automático e inyección de `.env` compartido entre servicios.",
+      "Proxy Nginx liviano con SSL para pruebas seguras de APIs.",
     ],
     tech: [
       "Docker",
@@ -37,12 +37,11 @@ export const projects = [
   {
     title: "Server Management Toolkit",
     desc: [
-      "Set of Bash utilities for monitoring, backup, and log cleanup across remote Linux servers.",
-      "Automated weekly maintenance routines and disk health checks using smartctl and crontab.",
-      "Centralized log rotation system with Telegram notifications on error thresholds.",
-      "Designed for shared hosting and VPS instances managed under Strivex Labs infrastructuretructure.",
+      "Conjunto de utilidades Bash para monitoreo, backups y limpieza de logs en servidores Linux remotos.",
+      "Rutinas semanales automatizadas y chequeos de salud de disco con smartctl y crontab.",
+      "Rotación centralizada de logs con notificaciones por Telegram ante umbrales de error.",
+      "Diseñado para hosting compartido y VPS administrados bajo la infraestructura de Strivex Labs.",
     ],
     tech: ["Bash", "Linux", "smartctl", "Cron", "SSH", "Telegram API"],
   },
 ];
-

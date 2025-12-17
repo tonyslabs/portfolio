@@ -5,25 +5,46 @@ interface Props {
   title: string;
   description?: string;
   path?: string; // e.g. "/web-development"
+  url?: string; // canonical URL (preferred)
   ogImage?: string;
+  image?: string; // legacy/compat with pages
 }
 
-const { title, description, path, ogImage } = Astro.props as Props;
+const { title, description, path, url, ogImage, image } = Astro.props as Props;
 
 const site = Astro.site ? String(Astro.site) : undefined;
-const canonical = site && path ? new URL(path, site).toString() : undefined;
+const canonical =
+  url ?? (site && path ? new URL(path, site).toString() : undefined);
+const resolvedOgImage = ogImage ?? image;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description ?? "Portfolio of Anthony Lacayo: web systems, APIs, and infrastructuretructure."} />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content={
+        description ??
+        "Portfolio de Anthony Lacayo: sistemas web, APIs e infraestructura."
+      }
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     {canonical && <link rel="canonical" href={canonical} />}
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content={
+        description ??
+        "Portfolio de Anthony Lacayo: sistemas web, APIs e infraestructura."
+      }
+    />
+    {resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
 
     <!-- Styles & Fonts -->
     <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
@@ -35,33 +56,28 @@ const canonical = site && path ? new URL(path, site).toString() : undefined;
     <slot />
     <script>
       import { setupLightbox } from '../scripts/lightbox.js';
-      let cleanup;
+      import { setupAnimations } from '../scripts/animations.js';
+
+      let cleanupLightbox;
+      let cleanupAnimations;
       document.addEventListener('astro:page-load', () => {
-        if (cleanup) cleanup();
-        cleanup = setupLightbox();
+        if (cleanupLightbox) cleanupLightbox();
+        if (cleanupAnimations) cleanupAnimations();
+        cleanupLightbox = setupLightbox();
+        cleanupAnimations = setupAnimations();
       });
       document.addEventListener('astro:before-swap', () => {
-        if (cleanup) cleanup();
+        if (cleanupLightbox) cleanupLightbox();
+        if (cleanupAnimations) cleanupAnimations();
       });
     </script>
   </body>
   
 </html>
 <style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
   html {
     font-family: system-ui, sans-serif;
-    background: #13151a;
+    background: #070a26;
     background-size: 224px;
   }
   code {

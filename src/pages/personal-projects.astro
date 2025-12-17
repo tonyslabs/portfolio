@@ -12,7 +12,7 @@ const meta = {
 };
 ---
 <Layout {...meta} path="/personal-projects">
-  <!-- FONDO DIFUMINADO CON GRID SVG -->
+  <!-- Fondo difuminado -->
   <div class="grid-background">
     <img src="/assets/grid-top-right.svg" alt="" class="grid-svg" />
   </div>
@@ -21,14 +21,6 @@ const meta = {
     <Sidebar selectedItem="personal-projects" />
     <main class="main-content">
       <div class="container">
-        <!-- Back Navigation -->
-        <div class="back-nav-container" data-animate>
-          <a href="/" class="back-nav-button">
-            <img src="/assets/back.svg" loading="lazy" alt="Back" class="back-nav-img" />
-            <span>Volver</span>
-          </a>
-        </div>
-
         <!-- Content -->
         <div class="content-container" data-animate>
           <h1>Proyectos Personales</h1>
@@ -57,7 +49,11 @@ const meta = {
 
 <style>
   :root {
-    --bg: linear-gradient(180deg, rgba(7, 10, 38, 0.98) 0%, rgba(7, 10, 38, 0.92) 100%);
+    --bg: linear-gradient(
+      180deg,
+      rgba(7, 10, 38, 0.98) 0%,
+      rgba(7, 10, 38, 0.92) 100%
+    );
     --accent: #863dff;
     --accent-hover: #dde0ff;
     --text: #ffffff;
@@ -68,14 +64,13 @@ const meta = {
     --sidebar-width: 260px;
     --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     --project-card-max: 1280px;
-    --project-min-height: 460px; /* Altura mínima igual para todas */
-    --images-area-height: 160px; /* Área de imágenes fija */
   }
 
-  /* ===== GRID SVG DIFUMINADO AL FONDO ===== */
+  /* Fondo */
   .grid-background {
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     pointer-events: none;
@@ -88,14 +83,11 @@ const meta = {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1800px;
-    height: auto;
-    max-width: none;
     opacity: 0.14;
     filter: blur(70px) brightness(1.4);
-    user-select: none;
   }
 
-  /* ===== Layout ===== */
+  /* Layout */
   .page-wrapper {
     position: relative;
     z-index: 1;
@@ -110,65 +102,32 @@ const meta = {
   .main-content {
     flex: 1;
     padding: 2.2rem 1.5rem;
-    overflow-x: hidden;
     padding-left: calc(var(--sidebar-width) + 1.5rem);
     position: relative;
     z-index: 2;
+    overflow-x: hidden;
   }
   @media (max-width: 900px) {
-    .main-content { padding-left: 1rem; }
+    .main-content {
+      padding-left: 1rem;
+    }
   }
-  .container { 
+  .container {
     max-width: 1400px;
-    margin: 0 auto; 
-    position: relative; 
-    z-index: 2; 
-    padding-top: 0.75rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
   }
 
-  /* ===== Back Button ===== */
-  .back-nav-container {
-    margin-bottom: 2rem;
-  }
-  .back-nav-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: var(--transition);
-    padding: 0.4rem 0;
-  }
-  .back-nav-button:hover {
-    color: white;
-    transform: translateX(-4px);
-  }
-  .back-nav-img {
-    width: 18px;
-    height: 18px;
-    filter: brightness(0) invert(1);
-    opacity: 0.7;
-    transition: var(--transition);
-  }
-  .back-nav-button:hover .back-nav-img {
-    opacity: 1;
-    transform: translateX(-2px);
-  }
-
-  /* ===== Content ===== */
+  /* Título y descripción */
   .content-container h1 {
     font-size: clamp(2.2rem, 5vw, 2.8rem);
     font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 1rem;
+    margin-bottom: 1rem;
     background: linear-gradient(135deg, #fff, #d0d4ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: -0.5px;
   }
-
   .section-intro {
     color: var(--text-muted);
     font-size: 1rem;
@@ -176,11 +135,11 @@ const meta = {
     margin-bottom: 2.5rem;
   }
 
+  /* Lista de proyectos (igual que /web-development) */
   .items-container {
     margin-top: 1rem;
   }
 
-  /* === COLUMNA ÚNICA + ALTURA CONSISTENTE === */
   .resource-items {
     display: flex;
     flex-direction: column;
@@ -191,170 +150,30 @@ const meta = {
     width: 100%;
   }
 
-  /* === TARJETA BASE (estilizada como en tu captura) === */
-  .project-card {
-    width: 100%;
-    max-width: var(--project-max-width);
-    min-height: var(--project-min-height);
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius);
-    padding: 1.6rem;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    transition: var(--transition);
-    align-self: center;
-    backdrop-filter: blur(10px);
-  }
-
-  .project-card:hover {
-    background: rgba(255,255,255,.08);
-    border-color: var(--accent);
-    transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(0,0,0,.25);
-  }
-
-  /* === Título === */
-  .project-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: white;
-    margin: 0 0 0.8rem;
-    line-height: 1.3;
-  }
-
-  /* === Descripción (lista) === */
-  .project-desc {
-    font-size: 0.94rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 1rem;
-    flex-grow: 1;
-  }
-
-  .project-desc ul {
-    margin: 0;
-    padding-left: 1.3rem;
-  }
-
-  .project-desc li {
-    margin-bottom: 0.35rem;
-  }
-
-  /* === Área de imágenes === */
-  .project-images {
-    height: var(--images-area-height);
-    margin: 1rem 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 0.6rem;
-    overflow: hidden;
-    border-radius: 12px;
-    padding: 0.2rem;
-  }
-
-  .project-images img {
-    width: 100%;
-    height: 100%;
-    min-height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: zoom-in;
-    transition: var(--transition);
-    box-shadow: 0 2px 8px rgba(0,0,0,.2);
-  }
-
-  .project-images img:hover {
-    transform: scale(1.04);
-    box-shadow: 0 6px 16px rgba(0,0,0,.3);
-  }
-
-  /* === Tecnologías === */
-  .project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: auto;
-    padding-top: 0.8rem;
-  }
-
-  .tech-chip {
-    background: rgba(255,255,255,.09);
-    color: var(--text);
-    font-size: 0.74rem;
-    font-weight: 500;
-    padding: 0.35rem 0.75rem;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,.14);
-    white-space: nowrap;
-    transition: var(--transition);
-  }
-
-  .tech-chip:hover {
-    background: rgba(110,86,207,.25);
-    border-color: var(--accent);
-    color: white;
-  }
-
-  /* ===== Animations ===== */
+  /* Animaciones */
   [data-animate] {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s ease;
   }
   [data-animate].visible {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* ===== Responsive ===== */
+  /* Responsive */
   @media (max-width: 768px) {
     .main-content {
       padding: 2rem 1rem;
     }
-    .back-nav-container {
-      margin-bottom: 1.5rem;
-    }
     .content-container h1 {
-      margin-bottom: 2rem;
-    }
-    :root {
-      --project-min-height: 500px;
-      --images-area-height: 140px;
-    }
-    .resource-items {
-      gap: 1.8rem;
-    }
-    .project-card {
-      padding: 1.4rem;
-      max-width: 100%;
-    }
-    .project-images {
-      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-      gap: 0.5rem;
-    }
-    .tech-chip {
-      font-size: 0.7rem;
-      padding: 0.3rem 0.6rem;
-    }
-    .overlay-content {
-      max-width: 95vw;
-      max-height: 90vh;
+      margin-bottom: 0.8rem;
     }
     .grid-svg {
       width: 1200px;
       filter: blur(50px);
-    }
-  }
-
-  @media (min-width: 1400px) {
-    .container {
-      max-width: 950px;
-    }
-    :root {
-      --project-max-width: 760px;
-      --project-min-height: 480px;
     }
   }
 </style>

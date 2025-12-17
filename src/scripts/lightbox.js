@@ -56,15 +56,19 @@ export function setupLightbox() {
   }
 
   const onClick = (e) => {
-    const link = e.target.closest('a.lightbox-link');
+    const link = e.target.closest('.lightbox-link');
     if (!link) return;
-    const href = link.getAttribute('href');
+    const href = link.getAttribute('href') || link.getAttribute('data-src');
     if (!href) return;
     e.preventDefault();
     const groupId = link.getAttribute('data-lightbox');
     if (groupId) {
-      const groupLinks = Array.from(document.querySelectorAll(`a.lightbox-link[data-lightbox="${groupId}"]`));
-      const group = groupLinks.map((a) => a.getAttribute('href')).filter(Boolean);
+      const groupLinks = Array.from(
+        document.querySelectorAll(`.lightbox-link[data-lightbox="${groupId}"]`),
+      );
+      const group = groupLinks
+        .map((el) => el.getAttribute('href') || el.getAttribute('data-src'))
+        .filter(Boolean);
       const index = groupLinks.indexOf(link);
       open(href, group, index);
     } else {
@@ -83,7 +87,8 @@ export function setupLightbox() {
     if (e.target === backdrop) close();
   };
 
-  document.addEventListener('click', onClick);
+  // Use capture so we can prevent navigation even if other handlers exist.
+  document.addEventListener('click', onClick, true);
   document.addEventListener('keydown', onKey);
   closeBtn.addEventListener('click', close);
   prevBtn.addEventListener('click', prev);
@@ -91,7 +96,7 @@ export function setupLightbox() {
   backdrop.addEventListener('click', onBackdrop);
 
   return () => {
-    document.removeEventListener('click', onClick);
+    document.removeEventListener('click', onClick, true);
     document.removeEventListener('keydown', onKey);
     closeBtn.removeEventListener('click', close);
     prevBtn.removeEventListener('click', prev);

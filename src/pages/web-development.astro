@@ -23,14 +23,6 @@ const meta = {
     <Sidebar selectedItem="web-development" />
     <main class="main-content">
       <div class="container">
-        <!-- Back -->
-        <div class="back-nav-container" data-animate>
-          <a href="/" class="back-nav-button" aria-label="Volver al inicio">
-            <img src="/assets/back.svg" alt="Flecha de volver" class="back-nav-img" />
-            <span>Volver</span>
-          </a>
-        </div>
-
         <!-- Content -->
         <div class="content-container" data-animate>
           <h1>Frontend y UX</h1>
@@ -124,37 +116,6 @@ const meta = {
     margin: 0 auto;
     position: relative;
     z-index: 2;
-  }
-
-  /* Back */
-  .back-nav-container {
-    margin-bottom: 2rem;
-  }
-  .back-nav-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: var(--transition);
-    padding: 0.4rem 0;
-  }
-  .back-nav-button:hover {
-    color: #fff;
-    transform: translateX(-4px);
-  }
-  .back-nav-img {
-    width: 18px;
-    height: 18px;
-    filter: brightness(0) invert(1);
-    opacity: 0.7;
-    transition: var(--transition);
-  }
-  .back-nav-button:hover .back-nav-img {
-    opacity: 1;
-    transform: translateX(-2px);
   }
 
   /* Título y descripción */

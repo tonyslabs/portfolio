@@ -20,7 +20,29 @@ const meta = {
         <!-- Hero -->
         <section class="hero" data-animate>
           <div class="hero-content">
-            <h1>Hola, soy Anthony.<br />Construyo y conecto sistemas web.</h1>
+            <div class="hero-header">
+              <div class="profile-photo">
+                <img
+                  src="/images/images.png"
+                  width="578"
+                  height="426"
+                  alt="Foto de perfil de Anthony"
+                  decoding="async"
+                  fetchpriority="high"
+                />
+              </div>
+              <h1 class="headline" aria-label="Hola soy Anthony. Construyo y conecto sistemas web.">
+                <span class="headline-desktop" aria-hidden="true">
+                  <span class="headline-line">Hola soy Anthony</span>
+                  <span class="headline-line">Construyo y conecto sistemas web.</span>
+                </span>
+                <span class="headline-mobile" aria-hidden="true">
+                  <span class="headline-line">Hola soy Anthony</span>
+                  <span class="headline-line">Construyo y conecto</span>
+                  <span class="headline-line">sistemas web.</span>
+                </span>
+              </h1>
+            </div>
             <p class="lead">
               Desarrollador Full Stack enfocado en arquitectura backend, diseño
               de APIs y automatización. Experiencia con Laravel, FastAPI e
@@ -57,7 +79,7 @@ const meta = {
           </div>
           <div class="projects-track" id="projects-track">
             <!-- Frontend & UX -->
-            <a href="/web-development" class="project-card" aria-label="Frontend y diseño UX">
+            <a href="/web-development" class="project-card glass-card" aria-label="Frontend y diseño UX">
               <div class="icon">
                 <img src="/assets/icons/layout.svg" alt="Icono de Frontend" />
               </div>
@@ -76,7 +98,7 @@ const meta = {
             </a>
 
             <!-- Backend & APIs -->
-            <a href="/api-integrations" class="project-card" aria-label="Backend y desarrollo de APIs">
+            <a href="/api-integrations" class="project-card glass-card" aria-label="Backend y desarrollo de APIs">
               <div class="icon">
                 <img src="/assets/icons/server.svg" alt="Icono de Backend" />
               </div>
@@ -95,7 +117,7 @@ const meta = {
             </a>
 
             <!-- Automation & Infrastructure -->
-            <a href="/infrastructure" class="project-card" aria-label="Automatización e infraestructura">
+            <a href="/infrastructure" class="project-card glass-card" aria-label="Automatización e infraestructura">
               <div class="icon">
                 <img src="/assets/icons/terminal.svg" alt="Icono de DevOps" />
               </div>
@@ -114,7 +136,7 @@ const meta = {
             </a>
 
             <!-- Personal Projects -->
-            <a href="/personal-projects" class="project-card" aria-label="Proyectos personales y experimentos">
+            <a href="/personal-projects" class="project-card glass-card" aria-label="Proyectos personales y experimentos">
               <div class="icon">
                 <img src="/assets/icons/flask.svg" alt="Icono de Proyectos" />
               </div>
@@ -193,9 +215,10 @@ const meta = {
     z-index: 2;
   }
   /* Separación superior para que el hero no quede pegado al borde */
-  .container { padding-top: 0.75rem; }
+  .container { padding-top: 1.6rem; }
   @media (max-width: 900px) {
     .main-content { padding-left: 1rem; padding-top: 1.5rem; }
+    .container { padding-top: 1.2rem; }
   }
   .container { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; }
   /* ===== Hero ===== */
@@ -203,15 +226,67 @@ const meta = {
     max-width: 780px;
     margin-bottom: 0.85rem;
   }
+  .hero-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .profile-photo {
+    width: 112px;
+    height: 112px;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid rgba(221, 224, 255, 0.18);
+    background: linear-gradient(180deg, rgba(13, 16, 40, 0.9), rgba(10, 12, 32, 0.72));
+    box-shadow:
+      0 18px 58px rgba(0, 0, 0, 0.42),
+      0 0 0 1px rgba(134, 61, 255, 0.18);
+    flex: 0 0 auto;
+    position: relative;
+  }
+  .profile-photo::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 999px;
+    pointer-events: none;
+    background: conic-gradient(
+      from 180deg,
+      rgba(134, 61, 255, 0.55),
+      rgba(221, 224, 255, 0.12),
+      rgba(134, 61, 255, 0.25)
+    );
+    -webkit-mask: radial-gradient(closest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+    mask: radial-gradient(closest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+    opacity: 0.55;
+  }
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: 50% 35%;
+    transform: scale(1.04);
+    filter: contrast(1.05) saturate(1.05);
+  }
   .hero-content h1 {
-    font-size: clamp(2.3rem, 5vw, 3rem);
+    font-size: clamp(2.15rem, 5vw, 3rem);
     font-weight: 700;
     line-height: 1.2;
-    margin: 0 0 1rem;
+    margin: 0;
     background: linear-gradient(135deg, #fff, #d0d4ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.5px;
+    overflow-wrap: normal;
+  }
+  .headline-line {
+    display: block;
+    white-space: nowrap;
+  }
+  .headline-mobile {
+    display: none;
   }
   .lead {
     font-size: 1.08rem;
@@ -328,6 +403,7 @@ const meta = {
     /* Centrado perfecto */
     justify-content: center;
     flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
   }
   .projects-track::before,
   .projects-track::after {
@@ -340,9 +416,6 @@ const meta = {
     flex: 0 0 310px;
     width: 310px;
     height: 250px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius);
     padding: 1.4rem 1.1rem;
     display: flex;
     flex-direction: column;
@@ -351,18 +424,21 @@ const meta = {
     text-align: center;
     text-decoration: none;
     color: var(--text);
-    backdrop-filter: blur(10px);
     transition: var(--transition);
     box-sizing: border-box;
     overflow: hidden;
-    position: relative;
     z-index: 2;
+    --glass-radius: 18px;
+    --glass-bg-1: rgba(13, 16, 40, 0.84);
+    --glass-bg-2: rgba(10, 12, 32, 0.64);
+    --glass-border: rgba(221, 224, 255, 0.14);
+    --glass-border-strong: rgba(221, 224, 255, 0.24);
+    --glass-shadow: 0 14px 44px rgba(0, 0, 0, 0.35);
+    --glass-shadow-hover: 0 22px 64px rgba(0, 0, 0, 0.48);
+    scroll-snap-align: start;
   }
   .project-card:hover {
-    background: rgba(255,255,255,.08);
-    border-color: var(--accent);
     transform: translateY(-5px);
-    box-shadow: 0 10px 24px rgba(0,0,0,.25);
   }
   .icon {
     width: 60px; height: 60px;
@@ -422,15 +498,53 @@ const meta = {
     .project-card { width: 330px; height: 270px; }
   }
   @media (max-width: 768px) {
-    .project-card { width: 260px; height: 230px; padding: 1.1rem; }
+    .hero {
+      max-width: 760px;
+    }
+    .hero-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.9rem;
+      margin-bottom: 0.85rem;
+    }
+    .profile-photo {
+      width: 96px;
+      height: 96px;
+    }
+    .hero-content h1 {
+      font-size: clamp(1.65rem, 9.6vw, 3rem);
+    }
+    .headline-desktop {
+      display: none;
+    }
+    .headline-mobile {
+      display: block;
+    }
+    /* Mobile: show one card per view */
+    .project-card {
+      flex: 0 0 calc(100% - 2rem);
+      width: calc(100% - 2rem);
+      height: 230px;
+      padding: 1.1rem;
+    }
     .icon { width: 54px; height: 54px; margin-bottom: .8rem; }
     .icon img { width: 26px; height: 26px; }
     .content h3 { font-size: 1.02rem; margin-bottom: .6rem; }
     .chip { font-size: .72rem; padding: .3rem .6rem; }
     .grid-svg { width: 1200px; filter: blur(50px); }
     .hero { margin-bottom: 1rem; }
-    .projects-section { margin-top: 0.3rem; }
-    .section-header { margin-bottom: 1rem; }
+    .projects-section { margin-top: 0.75rem; }
+    .section-header { margin-bottom: 0.85rem; }
+    .projects-track {
+      justify-content: flex-start;
+      padding: 0.85rem 1rem;
+      gap: 1rem;
+      scroll-padding: 0 1rem;
+    }
+    .projects-track::before,
+    .projects-track::after {
+      display: none;
+    }
     .lead { margin-bottom: 1.2rem; }
   }
 </style>

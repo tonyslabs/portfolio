@@ -21,14 +21,6 @@ const meta = {
     <Sidebar selectedItem="infrastructure" />
     <main class="main-content">
       <div class="container">
-        <!-- Back Navigation -->
-        <div class="back-nav-container" data-animate>
-          <a href="/" class="back-nav-button">
-            <img src="/assets/back.svg" loading="lazy" alt="Back" class="back-nav-img" />
-            <span>Volver</span>
-          </a>
-        </div>
-
         <!-- Content -->
         <div class="content-container" data-animate>
           <h1>Infraestructura y Automatización</h1>
@@ -114,43 +106,12 @@ const meta = {
   }
   .container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
 
-  /* ===== Back Button ===== */
-  .back-nav-container {
-    margin-bottom: 2rem;
-  }
-  .back-nav-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: var(--transition);
-    padding: 0.4rem 0;
-  }
-  .back-nav-button:hover {
-    color: white;
-    transform: translateX(-4px);
-  }
-  .back-nav-img {
-    width: 18px;
-    height: 18px;
-    filter: brightness(0) invert(1);
-    opacity: 0.7;
-    transition: var(--transition);
-  }
-  .back-nav-button:hover .back-nav-img {
-    opacity: 1;
-    transform: translateX(-2px);
-  }
-
   /* ===== Content ===== */
   .content-container h1 {
     font-size: clamp(2.2rem, 5vw, 2.8rem);
     font-weight: 700;
     line-height: 1.2;
-    margin: 0 0 2.5rem;
+    margin: 0 0 1rem;
     background: linear-gradient(135deg, #fff, #d0d4ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -162,11 +123,13 @@ const meta = {
   }
 
   .resource-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
     padding: 0;
     list-style: none;
+    align-items: center;
+    width: 100%;
   }
 
   /* ===== Animations ===== */
@@ -185,25 +148,12 @@ const meta = {
     .main-content {
       padding: 2rem 1rem;
     }
-    .back-nav-container {
-      margin-bottom: 1.5rem;
-    }
     .content-container h1 {
-      margin-bottom: 2rem;
-    }
-    .resource-items {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+      margin-bottom: 0.8rem;
     }
     .grid-svg {
       width: 1200px;
       filter: blur(50px);
-    }
-  }
-
-  @media (min-width: 1400px) {
-    .resource-items {
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
     }
   }
 </style>

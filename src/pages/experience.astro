@@ -1,0 +1,291 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import { experiences, education } from "../data/experience";
+
+const meta = {
+  title: "Experiencia & Educación | Anthony Lacayo",
+  description:
+    "Trayectoria profesional liderando plataformas web, APIs y automatización junto a formación en ingeniería de software y DevOps.",
+  image: "/og-image.jpg",
+  url: "https://anthonylacayo.com/experience",
+};
+---
+
+<Layout {...meta} path="/experience">
+  <div class="page-wrapper">
+    <Sidebar selectedItem="experience" />
+    <main class="main-content">
+      <div class="container">
+        <div class="content-container" data-animate>
+          <header class="page-header">
+            <div>
+              <h1>Educacion y experiencia profesional</h1>
+              <p class="section-intro">
+                Mi carrera gira en torno a impulsar productos digitales que
+                combinan interfaces cuidadas, backend sólido y ops
+                automatizadas.
+              </p>
+            </div>
+            <div class="header-meta">
+              <span>+3 años construyendo soluciones críticas</span>
+              <span class="separator" aria-hidden="true">•</span>
+              <span>Especialista en FastAPI, Laravel y DevOps</span>
+            </div>
+          </header>
+
+          <section class="resume-section">
+            <div class="section-header">
+              <h2>Educación & certificaciones</h2>
+            </div>
+            <div class="resume-grid">
+              {
+                education.map((item) => (
+                  <article class="resume-card">
+                    <header>
+                      <div>
+                        <p class="period">{item.period}</p>
+                        <h3>{item.degree}</h3>
+                      </div>
+                      <span class="company">{item.institution}</span>
+                    </header>
+                    <p class="location">{item.location}</p>
+                    <ul>
+                      {item.highlights.map((point) => (
+                        <li>{point}</li>
+                      ))}
+                    </ul>
+                    {item.skills && (
+                      <div class="item-skills">
+                        <span>Skills:</span> {item.skills.join(" • ")}
+                      </div>
+                    )}
+                  </article>
+                ))
+              }
+            </div>
+          </section>
+
+          <section class="resume-section">
+            <div class="section-header">
+              <h2>Experiencia profesional</h2>
+            </div>
+            <div class="resume-grid">
+              {
+                experiences.map((item) => (
+                  <article class="resume-card">
+                    <header>
+                      <div>
+                        <p class="period">{item.period}</p>
+                        <h3>{item.role}</h3>
+                      </div>
+                      <span class="company">{item.company}</span>
+                    </header>
+                    <p class="location">{item.location}</p>
+                    <ul>
+                      {item.desc.map((point) => (
+                        <li>{point}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))
+              }
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  :root {
+    --bg: linear-gradient(
+      180deg,
+      rgba(7, 10, 38, 0.98) 0%,
+      rgba(7, 10, 38, 0.92) 100%
+    );
+    --text: #ffffff;
+    --text-muted: #dde0ff;
+    --radius: 18px;
+    --sidebar-width: 260px;
+    --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 100vh;
+    background: var(--bg);
+    background-attachment: fixed;
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 2.2rem 1.5rem;
+    padding-left: calc(var(--sidebar-width) + 1.5rem);
+    position: relative;
+    z-index: 2;
+    overflow-x: hidden;
+  }
+  @media (max-width: 900px) {
+    .main-content {
+      padding-left: 1rem;
+    }
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .content-container h1 {
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #fff, #d0d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .section-intro {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 760px;
+  }
+  .page-header {
+    background: linear-gradient(
+      160deg,
+      rgba(134, 61, 255, 0.2),
+      rgba(8, 11, 32, 0.95)
+    );
+    border-radius: 28px;
+    padding: 2rem 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+    margin: 0 auto 1.8rem;
+    max-width: 1140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    color: rgba(221, 224, 255, 0.75);
+    letter-spacing: 0.02em;
+  }
+  .header-meta .separator {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .resume-section {
+    margin-bottom: 2.8rem;
+  }
+
+  .resume-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.4rem;
+    max-width: 1260px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .resume-card {
+    padding: 1.75rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(12, 15, 36, 0.85);
+    box-shadow: 0 35px 60px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1 1 600px;
+    max-width: 600px;
+  }
+
+  .resume-card header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .resume-card h3 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .resume-card .period {
+    margin: 0;
+    font-size: 0.85rem;
+    color: rgba(221, 224, 255, 0.7);
+  }
+
+  .resume-card .company {
+    font-size: 0.85rem;
+    color: rgba(221, 224, 255, 0.6);
+  }
+
+  .resume-card .location {
+    font-size: 0.85rem;
+    color: rgba(221, 224, 255, 0.6);
+    margin-bottom: 0.6rem;
+  }
+
+  .item-skills {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.72);
+    letter-spacing: 0.02em;
+    margin-top: 0.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .item-skills span {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  .resume-card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    list-style-type: disc;
+    color: rgba(221, 224, 255, 0.75);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .resume-card {
+      padding: 1.25rem;
+    }
+    .resume-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 768px) {
+    .page-header {
+      flex-direction: column;
+      padding: 1.6rem;
+    }
+    .header-meta {
+      justify-content: flex-start;
+    }
+  }
+</style>

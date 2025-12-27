@@ -1,20 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Sidebar from "../components/Sidebar.astro";
 const meta = {
-  title: "Anthony Lacayo | Desarrollador Full Stack",
+  title: "Anthony Lacayo | Full Stack, APIs y Automatización DevOps",
   description:
-    "Desarrollador especializado en sistemas web modernos, arquitectura backend y automatización.",
+    "Ingeniero Full Stack que combina interfaces Astro/React con backends Python y pipelines DevOps para negocios que necesitan APIs escalables y operaciones automatizadas.",
   image: "/og-image.jpg",
   url: "https://anthonylacayo.com/",
 };
 ---
-  <Layout {...meta} path="/">
-  <div class="grid-background">
-    <img src="/assets/grid-top-right.svg" alt="" class="grid-svg" />
-  </div>
+
+<Layout {...meta} path="/">
   <div class="page-wrapper">
-    <Sidebar selectedItem="home" />
     <main class="main-content">
       <div class="container">
         <!-- Hero -->
@@ -31,10 +27,15 @@ const meta = {
                   fetchpriority="high"
                 />
               </div>
-              <h1 class="headline" aria-label="Hola soy Anthony. Construyo y conecto sistemas web.">
+              <h1
+                class="headline"
+                aria-label="Hola soy Anthony. Construyo y conecto sistemas web."
+              >
                 <span class="headline-desktop" aria-hidden="true">
                   <span class="headline-line">Hola soy Anthony</span>
-                  <span class="headline-line">Construyo y conecto sistemas web.</span>
+                  <span class="headline-line"
+                    >Construyo y conecto sistemas web.</span
+                  >
                 </span>
                 <span class="headline-mobile" aria-hidden="true">
                   <span class="headline-line">Hola soy Anthony</span>
@@ -49,109 +50,132 @@ const meta = {
               integraciones REST/JSON. Apasionado por el rendimiento, la
               escalabilidad y las interfaces elegantes.
             </p>
-            <a href="mailto:Anthony@strivexlabs.com" class="contact-btn">
-              Contactar <span class="btn-arrow">→</span>
-            </a>
+            <div class="hero-accent">
+              <span>Plataformas web · APIs · Automatización · DevOps</span>
+            </div>
             <div class="hero-actions">
-              <a href="/cv.pdf" class="secondary-btn" download aria-label="Descargar CV">
+              <a href="mailto:alacayo@strivexlabs.com" class="contact-btn">
+                Contactar <span class="btn-arrow">→</span>
+              </a>
+              <a
+                href="/CV%20Anthony%20Lacayo%202026.pdf"
+                class="secondary-btn"
+                download
+                aria-label="Descargar CV"
+              >
                 Descargar CV <span class="btn-arrow">→</span>
               </a>
               <div class="hero-social">
-                <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub">
-                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                    <path fill="currentColor" d="M12 .5C5.73.5.75 5.67.75 12.1c0 5.14 3.33 9.5 7.95 11.03.58.11.8-.26.8-.57 0-.28-.01-1.02-.02-2-3.23.72-3.91-1.6-3.91-1.6-.53-1.39-1.29-1.76-1.29-1.76-1.06-.74.08-.72.08-.72 1.17.08 1.78 1.25 1.78 1.25 1.04 1.83 2.72 1.3 3.39 1 .11-.77.41-1.3.74-1.6-2.58-.3-5.29-1.33-5.29-5.91 0-1.31.45-2.38 1.19-3.22-.12-.3-.52-1.51.11-3.14 0 0 .97-.32 3.18 1.23.92-.26 1.9-.39 2.88-.39s1.96.13 2.88.39c2.21-1.55 3.18-1.23 3.18-1.23.63 1.63.23 2.84.11 3.14.74.84 1.19 1.91 1.19 3.22 0 4.6-2.72 5.61-5.31 5.91.42.37.8 1.1.8 2.22 0 1.6-.01 2.88-.01 3.27 0 .31.21.69.81.57 4.62-1.53 7.95-5.89 7.95-11.03C23.25 5.67 18.27.5 12 .5z"/>
+                <a
+                  href="https://github.com/tonyslabs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="icon-btn"
+                  aria-label="GitHub"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M12 .5C5.73.5.75 5.67.75 12.1c0 5.14 3.33 9.5 7.95 11.03.58.11.8-.26.8-.57 0-.28-.01-1.02-.02-2-3.23.72-3.91-1.6-3.91-1.6-.53-1.39-1.29-1.76-1.29-1.76-1.06-.74.08-.72.08-.72 1.17.08 1.78 1.25 1.78 1.25 1.04 1.83 2.72 1.3 3.39 1 .11-.77.41-1.3.74-1.6-2.58-.3-5.29-1.33-5.29-5.91 0-1.31.45-2.38 1.19-3.22-.12-.3-.52-1.51.11-3.14 0 0 .97-.32 3.18 1.23.92-.26 1.9-.39 2.88-.39s1.96.13 2.88.39c2.21-1.55 3.18-1.23 3.18-1.23.63 1.63.23 2.84.11 3.14.74.84 1.19 1.91 1.19 3.22 0 4.6-2.72 5.61-5.31 5.91.42.37.8 1.1.8 2.22 0 1.6-.01 2.88-.01 3.27 0 .31.21.69.81.57 4.62-1.53 7.95-5.89 7.95-11.03C23.25 5.67 18.27.5 12 .5z"
+                    ></path>
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                    <path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.93v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.66-1.85 3.41-1.85 3.65 0 4.32 2.4 4.32 5.52v6.22zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z"/>
+                <a
+                  href="https://www.linkedin.com/in/anthony-lacayo-5b54012b0/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="icon-btn"
+                  aria-label="LinkedIn"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.93v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.66-1.85 3.41-1.85 3.65 0 4.32 2.4 4.32 5.52v6.22zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z"
+                    ></path>
                   </svg>
                 </a>
               </div>
             </div>
           </div>
         </section>
-
-        <!-- Expertise -->
-        <section class="projects-section" data-animate>
-          <div class="section-header">
-            <h2>Mis Áreas de Desarrollo</h2>
+        <div class="hero-highlights">
+          <article class="highlight-card">
+            <span class="highlight-icon" aria-hidden="true">⚡</span>
+            <strong>Interfaces empresariales</strong>
+            <p>
+              Astro + React + Tailwind para administrar experiencias donde la
+              consistencia y el rendimiento son críticos.
+            </p>
+          </article>
+          <article class="highlight-card">
+            <span class="highlight-icon" aria-hidden="true">🛡️</span>
+            <strong>APIs confiables</strong>
+            <p>
+              Diseño de endpoints FastAPI/Laravel con documentación, control de
+              errores y pruebas que se integran con sistemas existentes.
+            </p>
+          </article>
+          <article class="highlight-card">
+            <span class="highlight-icon" aria-hidden="true">🧠</span>
+            <strong>Automatización continua</strong>
+            <p>
+              Pipelines y scripts que automatizan despliegues, sincronización de
+              datos y reportes con visibilidad.
+            </p>
+          </article>
+        </div>
+        <section class="home-links">
+          <div class="home-links-banner">
+            <div class="home-links-title">
+              <h2>Explora lo que ofrezco</h2>
+              <p>
+                Accede directamente a los detalles de Plataformas Web,
+                Experiencia y Proyectos personales.
+              </p>
+            </div>
+            <span class="home-links-divider" aria-hidden="true"></span>
           </div>
-          <div class="projects-track" id="projects-track">
-            <!-- Frontend & UX -->
-            <a href="/web-development" class="project-card glass-card" aria-label="Frontend y diseño UX">
-              <div class="icon">
-                <img src="/assets/icons/layout.svg" alt="Icono de Frontend" />
-              </div>
-              <div class="content">
-                <h3>Frontend & Diseño UX</h3>
-                <div class="chips">
-                  <span class="chip">Astro</span>
-                  <span class="chip">React</span>
-                  <span class="chip">Alpine.js</span>
-                  <span class="chip">TailwindCSS</span>
-                  <span class="chip">Vite</span>
-                  <span class="chip">TypeScript</span>
-                  <span class="chip">UI Responsiva</span>
-                </div>
-              </div>
+          <div class="link-grid">
+            <a href="/experience" class="link-card">
+              <span class="link-card-icon">🚀</span>
+              <h3>Experiencia & Educación</h3>
+              <p>
+                FastAPI, Laravel y DevOps con equipo multidisciplinario y foco
+                en resultados.
+              </p>
             </a>
-
-            <!-- Backend & APIs -->
-            <a href="/api-integrations" class="project-card glass-card" aria-label="Backend y desarrollo de APIs">
-              <div class="icon">
-                <img src="/assets/icons/server.svg" alt="Icono de Backend" />
-              </div>
-              <div class="content">
-                <h3>Backend & Desarrollo de APIs</h3>
-                <div class="chips">
-                  <span class="chip">Laravel</span>
-                  <span class="chip">FastAPI</span>
-                  <span class="chip">Python</span>
-                  <span class="chip">PHP</span>
-                  <span class="chip">MySQL</span>
-                  <span class="chip">PostgreSQL</span>
-                  <span class="chip">REST / JSON</span>
-                </div>
-              </div>
+            <a href="/web-development" class="link-card">
+              <span class="link-card-icon">
+                <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true">
+                  <rect x="3" y="6" width="18" height="12" rx="3" ry="3" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  <rect x="6" y="9" width="12" height="3" fill="currentColor" />
+                  <circle cx="7.5" cy="16.5" r="0.75" fill="currentColor" />
+                  <circle cx="16.5" cy="16.5" r="0.75" fill="currentColor" />
+                </svg>
+              </span>
+              <h3>Plataformas Web</h3>
+              <p>
+                Astro, React y soluciones UI/UX para experiencias empresariales
+                rápidas y consistentes.
+              </p>
             </a>
-
-            <!-- Automation & Infrastructure -->
-            <a href="/infrastructure" class="project-card glass-card" aria-label="Automatización e infraestructura">
-              <div class="icon">
-                <img src="/assets/icons/terminal.svg" alt="Icono de DevOps" />
-              </div>
-              <div class="content">
-                <h3>Automatización & Infraestructura</h3>
-                <div class="chips">
-                  <span class="chip">Linux</span>
-                  <span class="chip">Docker</span>
-                  <span class="chip">Nginx</span>
-                  <span class="chip">GitHub Actions</span>
-                  <span class="chip">Cron</span>
-                  <span class="chip">CI/CD</span>
-                  <span class="chip">Bash</span>
-                </div>
-              </div>
-            </a>
-
-            <!-- Personal Projects -->
-            <a href="/personal-projects" class="project-card glass-card" aria-label="Proyectos personales y experimentos">
-              <div class="icon">
-                <img src="/assets/icons/flask.svg" alt="Icono de Proyectos" />
-              </div>
-              <div class="content">
-                <h3>Proyectos Personales & Experimentos</h3>
-                <div class="chips">
-                  <span class="chip">Electron</span>
-                  <span class="chip">Nextcloud</span>
-                  <span class="chip">Tailscale</span>
-                  <span class="chip">Auto-hosting</span>
-                  <span class="chip">Streaming</span>
-                  <span class="chip">APIs</span>
-                  <span class="chip">Código Abierto</span>
-                </div>
-              </div>
+            <a href="/personal-projects" class="link-card">
+              <span class="link-card-icon">🛠️</span>
+              <h3>Proyectos Personales</h3>
+              <p>
+                Experimentación con APIs, automatización y redes privadas para
+                soluciones reales.
+              </p>
             </a>
           </div>
         </section>
@@ -162,7 +186,11 @@ const meta = {
 
 <style>
   :root {
-    --bg: linear-gradient(180deg, rgba(7, 10, 38, 0.98) 0%, rgba(7, 10, 38, 0.92) 100%);
+    --bg: linear-gradient(
+      180deg,
+      rgba(7, 10, 38, 0.98) 0%,
+      rgba(7, 10, 38, 0.92) 100%
+    );
     --accent: #863dff;
     --accent-hover: #dde0ff;
     --text: #ffffff;
@@ -172,28 +200,6 @@ const meta = {
     --radius: 18px;
     --sidebar-width: 260px;
     --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  /* ===== GRID SVG DIFUMINADO AL FONDO ===== */
-  .grid-background {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .grid-svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1800px;
-    height: auto;
-    max-width: none;
-    opacity: 0.14;
-    filter: blur(70px) brightness(1.4);
-    user-select: none;
   }
   /* ===== Layout ===== */
   .page-wrapper {
@@ -210,27 +216,56 @@ const meta = {
     flex: 1;
     padding: 1.6rem 1.25rem;
     overflow-x: hidden;
-    padding-left: calc(var(--sidebar-width) + 1.25rem);
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   /* Separación superior para que el hero no quede pegado al borde */
-  .container { padding-top: 1.6rem; }
-  @media (max-width: 900px) {
-    .main-content { padding-left: 1rem; padding-top: 1.5rem; }
-    .container { padding-top: 1.2rem; }
+  .container {
+    padding-top: 1.6rem;
   }
-  .container { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; }
+  @media (max-width: 900px) {
+    .main-content {
+      padding-left: 1rem;
+      padding-top: 1.5rem;
+    }
+    .container {
+      padding-top: 1.2rem;
+    }
+  }
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
   /* ===== Hero ===== */
   .hero {
     max-width: 780px;
-    margin-bottom: 0.85rem;
+    margin: 0 auto 0.4rem;
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+    padding: 2.75rem 3rem 2.25rem;
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(
+      180deg,
+      rgba(19, 23, 54, 0.9),
+      rgba(7, 10, 38, 0.9)
+    );
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.65);
+    overflow: hidden;
   }
   .hero-header {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1rem;
     margin-bottom: 1rem;
+    flex-direction: column;
   }
   .profile-photo {
     width: 112px;
@@ -238,7 +273,11 @@ const meta = {
     border-radius: 999px;
     overflow: hidden;
     border: 1px solid rgba(221, 224, 255, 0.18);
-    background: linear-gradient(180deg, rgba(13, 16, 40, 0.9), rgba(10, 12, 32, 0.72));
+    background: linear-gradient(
+      180deg,
+      rgba(13, 16, 40, 0.9),
+      rgba(10, 12, 32, 0.72)
+    );
     box-shadow:
       0 18px 58px rgba(0, 0, 0, 0.42),
       0 0 0 1px rgba(134, 61, 255, 0.18);
@@ -257,8 +296,16 @@ const meta = {
       rgba(221, 224, 255, 0.12),
       rgba(134, 61, 255, 0.25)
     );
-    -webkit-mask: radial-gradient(closest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
-    mask: radial-gradient(closest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+    -webkit-mask: radial-gradient(
+      closest-side,
+      transparent calc(100% - 2px),
+      #000 calc(100% - 1px)
+    );
+    mask: radial-gradient(
+      closest-side,
+      transparent calc(100% - 2px),
+      #000 calc(100% - 1px)
+    );
     opacity: 0.55;
   }
   .profile-photo img {
@@ -280,6 +327,7 @@ const meta = {
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.5px;
     overflow-wrap: normal;
+    text-align: center;
   }
   .headline-line {
     display: block;
@@ -290,39 +338,110 @@ const meta = {
   }
   .lead {
     font-size: 1.08rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.78);
     line-height: 1.65;
     max-width: 680px;
-    margin-bottom: 1.5rem; /* Reducido para compactar */
+    margin-bottom: 0.8rem;
+  }
+  .hero-accent {
+    margin-top: 0.2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.75);
+    position: relative;
+  }
+  .hero-accent::before {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    width: 60px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      rgba(134, 61, 255, 0),
+      rgba(134, 61, 255, 1),
+      rgba(134, 61, 255, 0)
+    );
+    transform: translateX(-50%);
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 20% 10%,
+        rgba(134, 61, 255, 0.35),
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        rgba(221, 224, 255, 0.08),
+        transparent 60%
+      );
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
   }
   .contact-btn {
     display: inline-flex;
     align-items: center;
-    gap: .5rem;
-    background: linear-gradient(135deg, rgba(134, 61, 255, 0.95), rgba(221, 224, 255, 0.22));
+    gap: 0.5rem;
+    background: linear-gradient(
+      135deg,
+      rgba(134, 61, 255, 0.95),
+      rgba(221, 224, 255, 0.22)
+    );
     color: white;
-    padding: .85rem 1.9rem;
+    padding: 0.85rem 1.9rem;
     border-radius: 14px;
     font-weight: 600;
-    font-size: .96rem;
+    font-size: 0.96rem;
     text-decoration: none;
     transition: var(--transition);
     border: 1px solid rgba(134, 61, 255, 0.25);
-    box-shadow: 0 0 0 1px rgba(134, 61, 255, 0.14), 0 0 34px rgba(134, 61, 255, 0.18);
+    box-shadow:
+      0 0 0 1px rgba(134, 61, 255, 0.14),
+      0 0 34px rgba(134, 61, 255, 0.18);
   }
   .contact-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 0 1px rgba(221, 224, 255, 0.18), 0 0 46px rgba(134, 61, 255, 0.26);
+    box-shadow:
+      0 0 0 1px rgba(221, 224, 255, 0.18),
+      0 0 46px rgba(134, 61, 255, 0.26);
   }
-  .btn-arrow { transition: transform .3s ease; }
-  .contact-btn:hover .btn-arrow { transform: translateX(4px); }
+  .btn-arrow {
+    transition: transform 0.3s ease;
+  }
+  .contact-btn:hover .btn-arrow {
+    transform: translateX(4px);
+  }
 
   .hero-actions {
     display: flex;
     align-items: center;
     gap: 0.9rem;
     margin-top: 0.9rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 0.9rem;
+    margin-top: 1.4rem;
+    justify-content: center;
+  }
+
+  .hero-actions > * {
+    flex-shrink: 0;
   }
 
   .secondary-btn {
@@ -343,7 +462,9 @@ const meta = {
   .secondary-btn:hover {
     transform: translateY(-1px);
     border-color: rgba(134, 61, 255, 0.28);
-    box-shadow: 0 0 0 1px rgba(134, 61, 255, 0.14), 0 0 28px rgba(134, 61, 255, 0.14);
+    box-shadow:
+      0 0 0 1px rgba(134, 61, 255, 0.14),
+      0 0 28px rgba(134, 61, 255, 0.14);
     color: #fff;
   }
 
@@ -351,6 +472,184 @@ const meta = {
     display: inline-flex;
     gap: 0.55rem;
     align-items: center;
+  }
+
+  .hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem auto 2rem;
+    max-width: 1100px;
+    justify-items: center;
+    width: 100%;
+  }
+  .highlight-card {
+    padding: 1.35rem 1.45rem;
+    border-radius: 26px;
+    border: 1px solid rgba(134, 61, 255, 0.35);
+    background: rgba(12, 15, 30, 0.85);
+    box-shadow: 0 35px 60px rgba(0, 0, 0, 0.55);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-card strong {
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+  }
+  .highlight-card p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: rgba(221, 224, 255, 0.75);
+  }
+  .highlight-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      140deg,
+      rgba(134, 61, 255, 0.25),
+      transparent 60%
+    );
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  .highlight-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 14px;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.25),
+      rgba(134, 61, 255, 0.24)
+    );
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+    border: 1px solid rgba(134, 61, 255, 0.65);
+  }
+
+  .home-links {
+    margin: 2.4rem auto 0;
+    width: 100%;
+    max-width: 1140px;
+    padding: 2rem;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 19, 42, 0.9);
+    box-shadow: 0 40px 70px rgba(6, 9, 26, 0.55);
+    position: relative;
+    overflow: hidden;
+  }
+  .home-links::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 20% -10%,
+      rgba(134, 61, 255, 0.25),
+      transparent 50%
+    );
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .home-links-banner {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+  .home-links-title h2 {
+    margin: 0;
+    font-size: clamp(1.9rem, 3vw, 2.35rem);
+  }
+  .home-links-title p {
+    margin: 0.45rem 0 0;
+    color: rgba(221, 224, 255, 0.82);
+  }
+  .home-links-divider {
+    display: block;
+    width: 140px;
+    height: 2px;
+    margin: 1rem auto 0.35rem;
+    background: linear-gradient(
+      90deg,
+      rgba(134, 61, 255, 0),
+      rgba(134, 61, 255, 1),
+      rgba(134, 61, 255, 0)
+    );
+    border-radius: 99px;
+    position: relative;
+  }
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.1rem;
+    margin-top: 0.8rem;
+  }
+  .link-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 1.45rem;
+    border-radius: 24px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(
+      180deg,
+      rgba(14, 20, 45, 0.9),
+      rgba(7, 10, 30, 0.9)
+    );
+    transition:
+      transform var(--transition),
+      border-color var(--transition),
+      box-shadow var(--transition);
+  }
+  .link-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    background: rgba(134, 61, 255, 0.12);
+    border: 1px solid rgba(134, 61, 255, 0.35);
+  }
+  .link-card-icon svg {
+    width: 22px;
+    height: 22px;
+    color: #fff;
+  }
+  .link-card-icon svg rect {
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+  }
+  .link-card-icon svg circle {
+    fill: currentColor;
+  }
+  .link-card h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+  }
+  .link-card p {
+    margin: 0;
+    color: rgba(221, 224, 255, 0.7);
+    line-height: 1.4;
+    font-size: 0.95rem;
+  }
+  .link-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(134, 61, 255, 0.5);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
   }
 
   .icon-btn {
@@ -370,27 +669,46 @@ const meta = {
     transform: translateY(-1px);
     border-color: rgba(134, 61, 255, 0.28);
     color: #fff;
-    box-shadow: 0 0 0 1px rgba(134, 61, 255, 0.14), 0 0 22px rgba(134, 61, 255, 0.14);
+    box-shadow:
+      0 0 0 1px rgba(134, 61, 255, 0.14),
+      0 0 22px rgba(134, 61, 255, 0.14);
   }
   /* ===== Sections ===== */
   .section-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.2rem; /* Reducido */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    margin-bottom: 1.2rem;
   }
-  .section-header h2 { font-size: 1.45rem; font-weight: 600; color: white; }
+  .section-header h2 {
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: white;
+  }
+  .section-intro {
+    color: rgba(221, 224, 255, 0.75);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin: 0.4rem 0 0;
+    max-width: 640px;
+  }
   [data-animate] {
     opacity: 0;
     transform: translateY(25px);
-    transition: opacity .8s ease, transform .8s ease;
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s ease;
   }
-  [data-animate].visible { opacity: 1; transform: translateY(0); }
+  [data-animate].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
   /* ===== Projects ===== */
-  .projects-section { 
+  .projects-section {
     margin-top: 0.5rem; /* Muy cerca del botón */
-    position: relative; 
-    z-index: 2; 
+    position: relative;
+    z-index: 2;
   }
   .projects-track {
     display: flex;
@@ -407,10 +725,12 @@ const meta = {
   }
   .projects-track::before,
   .projects-track::after {
-    content: '';
+    content: "";
     flex: 0 0 1rem;
   }
-  .projects-track::-webkit-scrollbar { display: none; }
+  .projects-track::-webkit-scrollbar {
+    display: none;
+  }
 
   .project-card {
     flex: 0 0 310px;
@@ -441,16 +761,22 @@ const meta = {
     transform: translateY(-5px);
   }
   .icon {
-    width: 60px; height: 60px;
-    background: rgba(110,86,207,.18);
+    width: 60px;
+    height: 60px;
+    background: rgba(110, 86, 207, 0.18);
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: .9rem;
+    margin-bottom: 0.9rem;
     flex-shrink: 0;
   }
-  .icon img { width: 30px; height: 30px; filter: brightness(0) invert(1); opacity: .9; }
+  .icon img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
   .content {
     flex: 1;
     display: flex;
@@ -463,7 +789,7 @@ const meta = {
     font-size: 1.08rem;
     font-weight: 600;
     color: white;
-    margin-bottom: .7rem;
+    margin-bottom: 0.7rem;
     line-height: 1.3;
     white-space: normal;
   }
@@ -471,39 +797,44 @@ const meta = {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: .4rem;
-    row-gap: .4rem;
+    gap: 0.4rem;
+    row-gap: 0.4rem;
     width: 100%;
     max-width: 100%;
-    padding: 0 .2rem;
+    padding: 0 0.2rem;
   }
   .chip {
-    background: rgba(255,255,255,.09);
+    background: rgba(255, 255, 255, 0.09);
     color: var(--text);
-    font-size: .74rem;
-    padding: .32rem .68rem;
+    font-size: 0.74rem;
+    padding: 0.32rem 0.68rem;
     border-radius: 8px;
-    border: 1px solid rgba(255,255,255,.14);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     white-space: nowrap;
     flex: 0 0 auto;
     transition: var(--transition);
   }
   .project-card:hover .chip {
-    background: rgba(110,86,207,.25);
+    background: rgba(110, 86, 207, 0.25);
     border-color: var(--accent);
     color: white;
   }
   /* RESPONSIVE */
   @media (min-width: 1400px) {
-    .project-card { width: 330px; height: 270px; }
+    .project-card {
+      width: 330px;
+      height: 270px;
+    }
   }
   @media (max-width: 768px) {
     .hero {
-      max-width: 760px;
+      max-width: 100%;
+      padding: 2rem 1.3rem 1.5rem;
+      border-radius: 24px;
     }
     .hero-header {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 0.9rem;
       margin-bottom: 0.85rem;
     }
@@ -520,6 +851,9 @@ const meta = {
     .headline-mobile {
       display: block;
     }
+    .headline-mobile .headline-line {
+      white-space: normal;
+    }
     /* Mobile: show one card per view */
     .project-card {
       flex: 0 0 calc(100% - 2rem);
@@ -527,14 +861,64 @@ const meta = {
       height: 230px;
       padding: 1.1rem;
     }
-    .icon { width: 54px; height: 54px; margin-bottom: .8rem; }
-    .icon img { width: 26px; height: 26px; }
-    .content h3 { font-size: 1.02rem; margin-bottom: .6rem; }
-    .chip { font-size: .72rem; padding: .3rem .6rem; }
-    .grid-svg { width: 1200px; filter: blur(50px); }
-    .hero { margin-bottom: 1rem; }
-    .projects-section { margin-top: 0.75rem; }
-    .section-header { margin-bottom: 0.85rem; }
+    .icon {
+      width: 54px;
+      height: 54px;
+      margin-bottom: 0.8rem;
+    }
+    .icon img {
+      width: 26px;
+      height: 26px;
+    }
+    .content h3 {
+      font-size: 1.02rem;
+      margin-bottom: 0.6rem;
+    }
+    .chip {
+      font-size: 0.72rem;
+      padding: 0.3rem 0.6rem;
+    }
+    .hero {
+      margin-bottom: 1rem;
+    }
+    .hero-content {
+      text-align: left;
+    }
+    .hero-content h1 {
+      text-align: left;
+    }
+    .lead {
+      text-align: left;
+    }
+    .hero-accent {
+      text-align: left;
+    }
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.75rem;
+      margin-top: 1.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding-top: 1rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      overflow-x: visible;
+    }
+    .contact-btn,
+    .secondary-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 0.9rem 0;
+    }
+    .hero-social {
+      justify-content: flex-start;
+    }
+    .projects-section {
+      margin-top: 0.75rem;
+    }
+    .section-header {
+      margin-bottom: 0.85rem;
+    }
     .projects-track {
       justify-content: flex-start;
       padding: 0.85rem 1rem;
@@ -545,6 +929,15 @@ const meta = {
     .projects-track::after {
       display: none;
     }
-    .lead { margin-bottom: 1.2rem; }
+    .lead {
+      margin-bottom: 1.2rem;
+    }
+    .hero-highlights {
+      margin: 1.25rem 0 1.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .highlight-card {
+      padding: 1rem 1.2rem;
+    }
   }
 </style>

@@ -54,8 +54,19 @@ body {
     radial-gradient(860px 520px at 40% 55%, rgba(134, 61, 255, 0.14), transparent 60%),
     radial-gradient(900px 520px at 72% 86%, rgba(221, 224, 255, 0.1), transparent 62%),
     radial-gradient(1000px 560px at 50% 112%, rgba(244, 255, 225, 0.085), transparent 62%),
-    var(--c-bg);
+  var(--c-bg);
   color: var(--c-white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Subtle background noise for "attitude" */

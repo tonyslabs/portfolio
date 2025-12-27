@@ -54,6 +54,13 @@ const resolvedOgImage = ogImage ?? image;
     <ViewTransitions />
   </head>
   <body>
+    <div class="site-background">
+      <img
+        src="/assets/grid-top-right.svg"
+        alt=""
+        class="site-grid"
+      />
+    </div>
     <slot />
     <script>
       import { setupLightbox } from '../scripts/lightbox.js';
@@ -84,6 +91,30 @@ const resolvedOgImage = ogImage ?? image;
     font-family: system-ui, sans-serif;
     background: #070a26;
     background-size: 224px;
+  }
+  body {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .site-background {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .site-grid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1800px;
+    opacity: 0.14;
+    filter: blur(70px) brightness(1.4);
+    mix-blend-mode: screen;
   }
   code {
     font-family:

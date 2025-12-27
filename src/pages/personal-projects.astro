@@ -5,25 +5,34 @@ import Sidebar from "../components/Sidebar.astro";
 import { projects } from "../data/personal";
 
 const meta = {
-  title: "Proyectos Personales | Anthony Lacayo",
-  description: "Proyectos personales seleccionados y contribuciones open source.",
+  title: "Proyectos Personales | Open Source, Electron y Automatización | Anthony Lacayo",
+  description:
+    "Proyectos personales y experimentos open source que combinan Electron, servicios auto-hosted y herramientas de automatización propias.",
   image: "/og-image.jpg",
   url: "https://anthonylacayo.com/personal-projects",
 };
 ---
 <Layout {...meta} path="/personal-projects">
   <!-- Fondo difuminado -->
-  <div class="grid-background">
-    <img src="/assets/grid-top-right.svg" alt="" class="grid-svg" />
-  </div>
-
   <div class="page-wrapper">
     <Sidebar selectedItem="personal-projects" />
     <main class="main-content">
       <div class="container">
         <!-- Content -->
         <div class="content-container" data-animate>
-          <h1>Proyectos Personales</h1>
+          <header class="page-header">
+            <div>
+              <h1>Proyectos Personales</h1>
+              <p class="section-intro">
+                Ideas que nacen en el laboratorio personal: herramientas Electron, integraciones con servicios y soluciones que prueban nuevas formas de automatizar el trabajo diario.
+              </p>
+            </div>
+            <div class="header-meta">
+              <span>Experimentación con código abierto y auto-hosting</span>
+              <span class="separator" aria-hidden="true">•</span>
+              <span>Focus en Laravel, FastAPI, React y automatizaciones</span>
+            </div>
+          </header>
           <section class="items-container">
             <div class="resource-items">
               {
@@ -64,27 +73,6 @@ const meta = {
     --sidebar-width: 260px;
     --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     --project-card-max: 1280px;
-  }
-
-  /* Fondo */
-  .grid-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .grid-svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1800px;
-    opacity: 0.14;
-    filter: blur(70px) brightness(1.4);
   }
 
   /* Layout */
@@ -149,6 +137,35 @@ const meta = {
     align-items: center;
     width: 100%;
   }
+  .page-header {
+    background: linear-gradient(160deg, rgba(134, 61, 255, 0.2), rgba(6, 9, 26, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    padding: 2rem 2.5rem;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 30px 60px rgba(6, 9, 26, 0.65);
+    width: 100%;
+    max-width: 1120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .page-header h1 {
+    margin-bottom: 0.6rem;
+  }
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: rgba(221, 224, 255, 0.75);
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    flex-wrap: wrap;
+  }
+  .header-meta .separator {
+    color: rgba(255, 255, 255, 0.3);
+  }
 
   /* Animaciones */
   [data-animate] {
@@ -171,9 +188,15 @@ const meta = {
     .content-container h1 {
       margin-bottom: 0.8rem;
     }
-    .grid-svg {
-      width: 1200px;
-      filter: blur(50px);
+    .page-header {
+      padding: 1.6rem 1.8rem;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(6, 9, 26, 0.6);
+      align-items: center;
+      text-align: center;
+    }
+    .header-meta {
+      justify-content: center;
     }
   }
 </style>

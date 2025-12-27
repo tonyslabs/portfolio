@@ -2,112 +2,128 @@
 const { selectedItem } = Astro.props;
 
 const navItems = [
-  { href: '/', label: 'Inicio', icon: 'home', key: 'home' },
-  { href: '/web-development', label: 'Frontend y UX', icon: 'layout', key: 'web-development' },
-  { href: '/api-integrations', label: 'Backend y APIs', icon: 'server', key: 'api-integrations' },
-  { href: '/infrastructure', label: 'Automatización & Infra', icon: 'terminal', key: 'infrastructure' },
-  { href: '/personal-projects', label: 'Proyectos', icon: 'flask', key: 'personal-projects' },
+  { href: "/", label: "Inicio", icon: "home", key: "home" },
+  {
+    href: "/experience",
+    label: "Experiencia & Educación",
+    icon: "server",
+    key: "experience",
+  },
+  {
+    href: "/web-development",
+    label: "Sistemas empresariales y plataformas web",
+    icon: "layout",
+    key: "web-development",
+  },
+  {
+    href: "/personal-projects",
+    label: "Proyectos",
+    icon: "flask",
+    key: "personal-projects",
+  },
 ];
 ---
 
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-inner">
-
     <!-- Navegación -->
-	    <nav class="nav" aria-label="Navegación principal">
-      {navItems.map((item) => (
-        (() => {
-          const isActive = selectedItem === item.key;
-          return (
-	        <a
-	          href={item.href}
-	          class={`nav-item ${isActive ? 'active' : ''}`}
-	          data-icon={item.icon}
-	          aria-current={isActive ? 'page' : undefined}
-	          title={item.label}
-	        >
-	          <span class="nav-icon-wrapper">
-	            <i class={`icon icon-${item.icon}`}></i>
-	          </span>
-	          <span class="nav-label">{item.label}</span>
-          <span class="nav-indicator"></span>
+    <nav class="nav" aria-label="Navegación principal">
+      {
+        navItems.map((item) =>
+          (() => {
+            const isActive = selectedItem === item.key;
+            return (
+              <a
+                href={item.href}
+                class={`nav-item ${isActive ? "active" : ""}`}
+                data-icon={item.icon}
+                aria-current={isActive ? "page" : undefined}
+                title={item.label}
+              >
+                <span class="nav-icon-wrapper">
+                  <i class={`icon icon-${item.icon}`} />
+                </span>
+                <span class="nav-label">{item.label}</span>
+                <span class="nav-indicator" />
+              </a>
+            );
+          })(),
+        )
+      }
+    </nav>
+
+    <!-- Acciones -->
+    <div class="sidebar-actions">
+      <a href="/CV%20Anthony%20Lacayo%202026.pdf" class="cv-btn" download aria-label="Descargar CV">
+        Descargar CV <span class="btn-arrow">→</span>
+      </a>
+
+      <div class="social">
+        <a
+          href="https://github.com/tu-usuario"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-btn"
+          aria-label="GitHub"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M12 .5C5.73.5.75 5.67.75 12.1c0 5.14 3.33 9.5 7.95 11.03.58.11.8-.26.8-.57 0-.28-.01-1.02-.02-2-3.23.72-3.91-1.6-3.91-1.6-.53-1.39-1.29-1.76-1.29-1.76-1.06-.74.08-.72.08-.72 1.17.08 1.78 1.25 1.78 1.25 1.04 1.83 2.72 1.3 3.39 1 .11-.77.41-1.3.74-1.6-2.58-.3-5.29-1.33-5.29-5.91 0-1.31.45-2.38 1.19-3.22-.12-.3-.52-1.51.11-3.14 0 0 .97-.32 3.18 1.23.92-.26 1.9-.39 2.88-.39s1.96.13 2.88.39c2.21-1.55 3.18-1.23 3.18-1.23.63 1.63.23 2.84.11 3.14.74.84 1.19 1.91 1.19 3.22 0 4.6-2.72 5.61-5.31 5.91.42.37.8 1.1.8 2.22 0 1.6-.01 2.88-.01 3.27 0 .31.21.69.81.57 4.62-1.53 7.95-5.89 7.95-11.03C23.25 5.67 18.27.5 12 .5z"
+            ></path>
+          </svg>
         </a>
-          );
-        })()
-      ))}
-	    </nav>
-	
-	    <!-- Acciones -->
-	    <div class="sidebar-actions">
-	      <a href="/cv.pdf" class="cv-btn" download aria-label="Descargar CV">
-	        Descargar CV <span class="btn-arrow">→</span>
-	      </a>
-	
-	      <div class="social">
-	        <a
-	          href="https://github.com/tu-usuario"
-	          target="_blank"
-	          rel="noopener noreferrer"
-	          class="social-btn"
-	          aria-label="GitHub"
-	        >
-	          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-	            <path
-	              fill="currentColor"
-	              d="M12 .5C5.73.5.75 5.67.75 12.1c0 5.14 3.33 9.5 7.95 11.03.58.11.8-.26.8-.57 0-.28-.01-1.02-.02-2-3.23.72-3.91-1.6-3.91-1.6-.53-1.39-1.29-1.76-1.29-1.76-1.06-.74.08-.72.08-.72 1.17.08 1.78 1.25 1.78 1.25 1.04 1.83 2.72 1.3 3.39 1 .11-.77.41-1.3.74-1.6-2.58-.3-5.29-1.33-5.29-5.91 0-1.31.45-2.38 1.19-3.22-.12-.3-.52-1.51.11-3.14 0 0 .97-.32 3.18 1.23.92-.26 1.9-.39 2.88-.39s1.96.13 2.88.39c2.21-1.55 3.18-1.23 3.18-1.23.63 1.63.23 2.84.11 3.14.74.84 1.19 1.91 1.19 3.22 0 4.6-2.72 5.61-5.31 5.91.42.37.8 1.1.8 2.22 0 1.6-.01 2.88-.01 3.27 0 .31.21.69.81.57 4.62-1.53 7.95-5.89 7.95-11.03C23.25 5.67 18.27.5 12 .5z"
-	            />
-	          </svg>
-	        </a>
-	        <a
-	          href="https://www.linkedin.com/in/tu-usuario"
-	          target="_blank"
-	          rel="noopener noreferrer"
-	          class="social-btn"
-	          aria-label="LinkedIn"
-	        >
-	          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-	            <path
-	              fill="currentColor"
-	              d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.93v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.66-1.85 3.41-1.85 3.65 0 4.32 2.4 4.32 5.52v6.22zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z"
-	            />
-	          </svg>
-	        </a>
-	        <a
-	          href="mailto:Anthony@strivexlabs.com"
-	          class="social-btn"
-	          aria-label="Email"
-	        >
-	          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-	            <path
-	              fill="currentColor"
-	              d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"
-	            />
-	          </svg>
-	        </a>
-	      </div>
-	    </div>
-	
-	  </div>
-	</aside>
+        <a
+          href="https://www.linkedin.com/in/tu-usuario"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-btn"
+          aria-label="LinkedIn"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.93v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.66-1.85 3.41-1.85 3.65 0 4.32 2.4 4.32 5.52v6.22zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z"
+            ></path>
+          </svg>
+        </a>
+        <a
+          href="mailto:alacayo@strivexlabs.com"
+          class="social-btn"
+          aria-label="Email"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
 
 <!-- Mobile bottom dock -->
 <nav class="mobile-dock" aria-label="Navegación">
-  {navItems.map((item) => {
-    const isActive = selectedItem === item.key;
-    return (
-      <a
-        href={item.href}
-        class={`dock-item ${isActive ? 'active' : ''}`}
-        aria-current={isActive ? 'page' : undefined}
-        title={item.label}
-      >
-        <span class="dock-icon" aria-hidden="true">
-          <i class={`icon icon-${item.icon}`}></i>
-        </span>
-        <span class="sr-only">{item.label}</span>
-      </a>
-    );
-  })}
+  {
+    navItems.map((item) => {
+      const isActive = selectedItem === item.key;
+      return (
+        <a
+          href={item.href}
+          class={`dock-item ${isActive ? "active" : ""}`}
+          aria-current={isActive ? "page" : undefined}
+          title={item.label}
+        >
+          <span class="dock-icon" aria-hidden="true">
+            <i class={`icon icon-${item.icon}`} />
+          </span>
+          <span class="sr-only">{item.label}</span>
+        </a>
+      );
+    })
+  }
 </nav>
 
 <!-- Mobile: show/hide dock toggle -->
@@ -129,29 +145,31 @@ const navItems = [
     >
       <path
         fill="currentColor"
-        d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"
-      />
+        d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path>
     </svg>
   </span>
 </button>
 
 <script>
   function setupDockToggle() {
-    const toggle = document.getElementById('dockToggle');
-    const dock = document.querySelector('.mobile-dock');
+    const toggle = document.getElementById("dockToggle");
+    const dock = document.querySelector(".mobile-dock");
     if (!toggle || !dock) return () => {};
 
-    const storageKey = 'dockHidden';
+    const storageKey = "dockHidden";
 
     const apply = (hidden) => {
-      document.body.classList.toggle('dock-hidden', hidden);
-      toggle.setAttribute('aria-pressed', String(hidden));
-      toggle.setAttribute('aria-label', hidden ? 'Mostrar navegación' : 'Ocultar navegación');
+      document.body.classList.toggle("dock-hidden", hidden);
+      toggle.setAttribute("aria-pressed", String(hidden));
+      toggle.setAttribute(
+        "aria-label",
+        hidden ? "Mostrar navegación" : "Ocultar navegación",
+      );
     };
 
     const initial = (() => {
       try {
-        return localStorage.getItem(storageKey) === '1';
+        return localStorage.getItem(storageKey) === "1";
       } catch {
         return false;
       }
@@ -160,30 +178,34 @@ const navItems = [
     apply(initial);
 
     const onClick = () => {
-      const next = !document.body.classList.contains('dock-hidden');
+      const next = !document.body.classList.contains("dock-hidden");
       apply(next);
       try {
-        localStorage.setItem(storageKey, next ? '1' : '0');
+        localStorage.setItem(storageKey, next ? "1" : "0");
       } catch {}
     };
 
-    toggle.addEventListener('click', onClick);
-    return () => toggle.removeEventListener('click', onClick);
+    toggle.addEventListener("click", onClick);
+    return () => toggle.removeEventListener("click", onClick);
   }
 
   let cleanupDock;
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener("astro:page-load", () => {
     if (cleanupDock) cleanupDock();
     cleanupDock = setupDockToggle();
   });
-  document.addEventListener('astro:before-swap', () => {
+  document.addEventListener("astro:before-swap", () => {
     if (cleanupDock) cleanupDock();
   });
 </script>
 
 <style>
   :root {
-    --bg: linear-gradient(180deg, rgba(7, 10, 38, 0.98) 0%, rgba(7, 10, 38, 0.92) 100%);
+    --bg: linear-gradient(
+      180deg,
+      rgba(7, 10, 38, 0.98) 0%,
+      rgba(7, 10, 38, 0.92) 100%
+    );
     --accent: #863dff;
     --accent-hover: #dde0ff;
     --text: #ffffff;
@@ -220,28 +242,41 @@ const navItems = [
     flex-direction: column;
   }
   /* Dock-only navigation (desktop + mobile) */
-  .sidebar { display: none; }
+  .sidebar {
+    display: none;
+  }
 
-	  .sidebar-inner {
-	    padding: 1.5rem 1.25rem;
-	    display: flex;
-	    flex-direction: column;
-	    height: 100%;
-	    overflow-y: auto;
-      transition: padding 420ms cubic-bezier(0.22, 1, 0.36, 1);
-	  }
+  .sidebar-inner {
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    transition: padding 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
-	  .profile { text-align: center; margin-bottom: 1.4rem; }
-    .profile-info {
-      transition:
-        opacity 220ms cubic-bezier(0.4, 0, 0.2, 1),
-        max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
-        margin 420ms cubic-bezier(0.22, 1, 0.36, 1);
-      max-height: 90px;
-      overflow: hidden;
-    }
-	  .profile-name { color: #fff; font-weight: 700; font-size: 1.1rem; }
-	  .profile-role { color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem; }
+  .profile {
+    text-align: center;
+    margin-bottom: 1.4rem;
+  }
+  .profile-info {
+    transition:
+      opacity 220ms cubic-bezier(0.4, 0, 0.2, 1),
+      max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      margin 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    max-height: 90px;
+    overflow: hidden;
+  }
+  .profile-name {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .profile-role {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+  }
 
   .nav {
     flex: 1;
@@ -249,51 +284,61 @@ const navItems = [
     flex-direction: column;
     gap: 0.55rem;
   }
-	  .nav-item {
-	    display: flex;
-	    align-items: center;
-	    padding: 0.86rem 1.05rem;
-	    color: var(--text);
-	    border-radius: var(--radius);
-	    position: relative;
-	    gap: 0.85rem;
-	    transition:
-        transform 260ms cubic-bezier(0.4, 0, 0.2, 1),
-        border-color 260ms cubic-bezier(0.4, 0, 0.2, 1),
-        background 260ms cubic-bezier(0.4, 0, 0.2, 1),
-        padding 420ms cubic-bezier(0.22, 1, 0.36, 1),
-        gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
-	    text-decoration: none;
-	    background: rgba(255, 255, 255, 0.02);
-	    border: 1px solid rgba(255, 255, 255, 0.06);
-	    overflow: hidden;
-	  }
-	  .nav-label {
-	    font-size: 0.95rem;
-	    white-space: nowrap;
-	    overflow: hidden;
-	    text-overflow: ellipsis;
-	    flex: 1;
-	    min-width: 0;
-      max-width: 220px;
-      opacity: 1;
-      transform: translateX(0);
-      transition:
-        max-width 420ms cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 220ms cubic-bezier(0.4, 0, 0.2, 1),
-        transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
-	  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.86rem 1.05rem;
+    color: var(--text);
+    border-radius: var(--radius);
+    position: relative;
+    gap: 0.85rem;
+    transition:
+      transform 260ms cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 260ms cubic-bezier(0.4, 0, 0.2, 1),
+      background 260ms cubic-bezier(0.4, 0, 0.2, 1),
+      padding 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+  }
+  .nav-label {
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
+    max-width: 220px;
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+      max-width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 220ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
-	  .nav-item.active {
-	    color: #fff;
-	    font-weight: 600;
-	    transform: none;
-	    padding: 0.82rem 1.05rem;
-	    background: linear-gradient(135deg, rgba(134, 61, 255, 0.18), rgba(221, 224, 255, 0.06));
-	    border-color: rgba(134, 61, 255, 0.28);
-	    box-shadow: 0 0 0 1px rgba(134, 61, 255, 0.14), 0 0 36px rgba(134, 61, 255, 0.14);
-	  }
-	  .nav-item:hover { color: #fff; transform: translateX(2px); border-color: rgba(221,224,255,0.18); }
+  .nav-item.active {
+    color: #fff;
+    font-weight: 600;
+    transform: none;
+    padding: 0.82rem 1.05rem;
+    background: linear-gradient(
+      135deg,
+      rgba(134, 61, 255, 0.18),
+      rgba(221, 224, 255, 0.06)
+    );
+    border-color: rgba(134, 61, 255, 0.28);
+    box-shadow:
+      0 0 0 1px rgba(134, 61, 255, 0.14),
+      0 0 36px rgba(134, 61, 255, 0.14);
+  }
+  .nav-item:hover {
+    color: #fff;
+    transform: translateX(2px);
+    border-color: rgba(221, 224, 255, 0.18);
+  }
 
   .nav-icon-wrapper {
     width: 26px;
@@ -311,14 +356,26 @@ const navItems = [
     mask-position: center;
     transition: transform 0.3s ease;
   }
-  .nav-item:hover .icon { transform: scale(1.1); }
+  .nav-item:hover .icon {
+    transform: scale(1.1);
+  }
 
   /* === ICONOS ACTUALIZADOS === */
-  .icon-home { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>'); }
-  .icon-layout { mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><rect x='3' y='3' width='18' height='18' rx='2'/><line x1='3' y1='9' x2='21' y2='9'/><line x1='9' y1='21' x2='9' y2='9'/></svg>"); }
-  .icon-server { mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><rect x='2' y='2' width='20' height='8' rx='2' ry='2'/><rect x='2' y='14' width='20' height='8' rx='2' ry='2'/><line x1='6' y1='6' x2='6.01' y2='6'/><line x1='6' y1='18' x2='6.01' y2='18'/></svg>"); }
-  .icon-terminal { mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><polyline points='4 17 10 11 4 5'/><line x1='12' y1='19' x2='20' y2='19'/></svg>"); }
-  .icon-flask { mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><path d='M9 2v3a4 4 0 0 1-1 2.65L4.5 14a4 4 0 0 0 3.3 6H16a4 4 0 0 0 3.3-6L16 7.65A4 4 0 0 1 15 5V2'/><line x1='6' y1='16' x2='18' y2='16'/></svg>"); }
+  .icon-home {
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>');
+  }
+  .icon-layout {
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><rect x='3' y='3' width='18' height='18' rx='2'/><line x1='3' y1='9' x2='21' y2='9'/><line x1='9' y1='21' x2='9' y2='9'/></svg>");
+  }
+  .icon-server {
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><rect x='2' y='2' width='20' height='8' rx='2' ry='2'/><rect x='2' y='14' width='20' height='8' rx='2' ry='2'/><line x1='6' y1='6' x2='6.01' y2='6'/><line x1='6' y1='18' x2='6.01' y2='18'/></svg>");
+  }
+  .icon-terminal {
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><polyline points='4 17 10 11 4 5'/><line x1='12' y1='19' x2='20' y2='19'/></svg>");
+  }
+  .icon-flask {
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><path d='M9 2v3a4 4 0 0 1-1 2.65L4.5 14a4 4 0 0 0 3.3 6H16a4 4 0 0 0 3.3-6L16 7.65A4 4 0 0 1 15 5V2'/><line x1='6' y1='16' x2='18' y2='16'/></svg>");
+  }
 
   /* Mobile bottom dock */
   .mobile-dock {
@@ -332,7 +389,11 @@ const navItems = [
     gap: 8px;
     padding: 10px 12px;
     border-radius: 18px;
-    background: linear-gradient(180deg, rgba(13, 16, 40, 0.82), rgba(10, 12, 32, 0.66));
+    background: linear-gradient(
+      180deg,
+      rgba(13, 16, 40, 0.82),
+      rgba(10, 12, 32, 0.66)
+    );
     border: 1px solid rgba(221, 224, 255, 0.14);
     box-shadow: 0 22px 70px rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(18px) saturate(170%);
@@ -369,7 +430,10 @@ const navItems = [
     color: rgba(221, 224, 255, 0.85);
     border: 1px solid rgba(255, 255, 255, 0);
     background: rgba(255, 255, 255, 0.02);
-    transition: transform 160ms cubic-bezier(0.4, 0, 0.2, 1), background 160ms cubic-bezier(0.4, 0, 0.2, 1), border-color 160ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition:
+      transform 160ms cubic-bezier(0.4, 0, 0.2, 1),
+      background 160ms cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 160ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   .dock-item:active {
     transform: scale(0.98);
@@ -383,7 +447,9 @@ const navItems = [
     background: rgba(134, 61, 255, 0.14);
     border-color: rgba(134, 61, 255, 0.24);
     color: #fff;
-    box-shadow: 0 0 0 1px rgba(134, 61, 255, 0.12), 0 0 26px rgba(134, 61, 255, 0.14);
+    box-shadow:
+      0 0 0 1px rgba(134, 61, 255, 0.12),
+      0 0 26px rgba(134, 61, 255, 0.14);
   }
   .dock-icon {
     width: 22px;
@@ -396,7 +462,9 @@ const navItems = [
   .dock-toggle {
     position: fixed;
     left: 50%;
-    bottom: calc(var(--dock-bottom) + var(--dock-height) + var(--dock-toggle-gap));
+    bottom: calc(
+      var(--dock-bottom) + var(--dock-height) + var(--dock-toggle-gap)
+    );
     transform: translateX(-50%);
     z-index: 81;
     width: 34px;
@@ -411,7 +479,12 @@ const navItems = [
     cursor: pointer;
     backdrop-filter: blur(12px) saturate(160%);
     -webkit-backdrop-filter: blur(12px) saturate(160%);
-    transition: transform var(--t-fast), opacity var(--t-fast), background var(--t-fast), border-color var(--t-fast), bottom var(--t-fast);
+    transition:
+      transform var(--t-fast),
+      opacity var(--t-fast),
+      background var(--t-fast),
+      border-color var(--t-fast),
+      bottom var(--t-fast);
   }
   .dock-toggle-icon {
     display: inline-flex;
@@ -455,74 +528,92 @@ const navItems = [
     border: 0;
   }
 
-	  .sidebar-actions {
-	    display: flex;
-	    flex-direction: column;
-	    gap: 0.85rem;
-	    margin-top: 0.95rem;
-	    padding-top: 1rem;
-	    border-top: 1px solid rgba(255, 255, 255, 0.08);
-      transition:
-        opacity 220ms cubic-bezier(0.4, 0, 0.2, 1),
-        max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
-        margin 420ms cubic-bezier(0.22, 1, 0.36, 1),
-        padding 420ms cubic-bezier(0.22, 1, 0.36, 1);
-      max-height: 240px;
-      overflow: hidden;
-	  }
+  .sidebar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: 0.95rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    transition:
+      opacity 220ms cubic-bezier(0.4, 0, 0.2, 1),
+      max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      margin 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      padding 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    max-height: 240px;
+    overflow: hidden;
+  }
 
-	  .cv-btn {
-	    display: inline-flex;
-	    align-items: center;
-	    justify-content: space-between;
-	    gap: 0.6rem;
-	    padding: 0.82rem 0.95rem;
-	    border-radius: 14px;
-	    text-decoration: none;
-	    color: #fff;
-	    font-weight: 650;
-	    background: linear-gradient(135deg, rgba(134, 61, 255, 0.38), rgba(221, 224, 255, 0.08));
-	    border: 1px solid rgba(134, 61, 255, 0.28);
-	    box-shadow: 0 0 0 1px rgba(134, 61, 255, 0.14), 0 0 36px rgba(134, 61, 255, 0.16);
-	    transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
-	  }
-	  .cv-btn:hover {
-	    transform: translateY(-1px);
-	    box-shadow: 0 0 0 1px rgba(221, 224, 255, 0.18), 0 0 46px rgba(134, 61, 255, 0.22);
-	  }
-	  .btn-arrow { opacity: 0.9; }
+  .cv-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.82rem 0.95rem;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 650;
+    background: linear-gradient(
+      135deg,
+      rgba(134, 61, 255, 0.38),
+      rgba(221, 224, 255, 0.08)
+    );
+    border: 1px solid rgba(134, 61, 255, 0.28);
+    box-shadow:
+      0 0 0 1px rgba(134, 61, 255, 0.14),
+      0 0 36px rgba(134, 61, 255, 0.16);
+    transition:
+      transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .cv-btn:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 1px rgba(221, 224, 255, 0.18),
+      0 0 46px rgba(134, 61, 255, 0.22);
+  }
+  .btn-arrow {
+    opacity: 0.9;
+  }
 
-	  .social {
-	    display: flex;
-	    gap: 0.55rem;
-	  }
+  .social {
+    display: flex;
+    gap: 0.55rem;
+  }
 
-	  .social-btn {
-	    width: 38px;
-	    height: 38px;
-	    display: inline-flex;
-	    align-items: center;
-	    justify-content: center;
-	    border-radius: 12px;
-	    background: rgba(255, 255, 255, 0.05);
-	    border: 1px solid rgba(255, 255, 255, 0.09);
-	    color: rgba(221, 224, 255, 0.92);
-	    text-decoration: none;
-	    transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1), border-color 180ms cubic-bezier(0.4, 0, 0.2, 1);
-	  }
-	  .social-btn:hover {
-	    transform: translateY(-1px);
-	    border-color: rgba(134, 61, 255, 0.28);
-	    color: #fff;
-	    box-shadow: 0 0 0 1px rgba(134, 61, 255, 0.14), 0 0 22px rgba(134, 61, 255, 0.14);
-	  }
+  .social-btn {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: rgba(221, 224, 255, 0.92);
+    text-decoration: none;
+    transition:
+      transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .social-btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(134, 61, 255, 0.28);
+    color: #fff;
+    box-shadow:
+      0 0 0 1px rgba(134, 61, 255, 0.14),
+      0 0 22px rgba(134, 61, 255, 0.14);
+  }
 
-	  .sidebar-footer {
-	    margin-top: auto;
-	    padding-top: 1rem;
-	    border-top: 1px solid rgba(255, 255, 255, 0.08);
-	  }
-  .sidebar-inner::-webkit-scrollbar { width: 4px; }
+  .sidebar-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .sidebar-inner::-webkit-scrollbar {
+    width: 4px;
+  }
   .sidebar-inner::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 2px;

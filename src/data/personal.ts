@@ -8,14 +8,10 @@ export const projects = [
       "Ofrece un resumen visual del resultado (seguro, malicioso o no soportado) y muestra los motores antivirus participantes."
     ],
     tech: [
-      "React Native (Expo SDK 52)",
+      "React Native",
       "TypeScript",
-      "React Navigation",
-      "Ionicons",
-      "React Native Stylesheet",
       "FastAPI",
-      "VirusTotal API v3",
-      "Expo EAS CLI"
+      "VirusTotal API",
     ],
     repo: "https://github.com/tonyslabs/scan4all-app",
     site: "",
@@ -37,10 +33,8 @@ export const projects = [
       "Python",
       "FastAPI",
       "httpx",
-      "fastapi.middleware.cors",
-      "python-dotenv",
-      "VirusTotal API v3",
-      "Uvicorn"
+      "FastAPI",
+      "VirusTotal API v3"
     ],
     repo: "https://github.com/tonyslabs/scan4all-api",
     site: "",
@@ -59,10 +53,9 @@ export const projects = [
       "React",
       "TypeScript",
       "TailwindCSS",
-      "Node.js",
       "Vite"
     ],
-    repo: "https://github.com/Anthonyslabs/hiresspot",
+    repo: "https://github.com/tonyslabs/hiresspot",
     site: "",
     images: [
       "/images/hires/1.png",
@@ -84,7 +77,7 @@ export const projects = [
       "Alpine.js",
       "Vite"
     ],
-    repo: "https://github.com/Anthonyslabs/filmsociety",
+    repo: "https://github.com/tonyslabs/filmsociety",
     site: "https://filmsocialclub.io/",
     images: [
       "/images/film/1.png",
